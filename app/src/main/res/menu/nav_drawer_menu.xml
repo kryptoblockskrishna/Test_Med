@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single" >
+        <item
+            android:id="@+id/my_profile"
+            android:title="My Profile"
+            android:icon="@drawable/ic_profile2"/>
+        <item
+            android:id="@+id/my_health"
+            android:title="My Health"
+            android:icon="@drawable/ic_my_health"
+            />
+        <item
+            android:id="@+id/insurance"
+            android:title="insurance"
+            android:icon="@drawable/ic_a2" />
+        <item
+            android:id="@+id/recent"
+            android:title="Recent"
+            android:icon="@drawable/ic_recent"/>
+    </group>
+
+    <!-- Creating Sub-Menu -->
+    <item
+        android:title="   Account"
+        android:id="@+id/navdraw_menu">
+
+        <menu>
+            <item
+                android:id="@+id/ac_settings"
+                android:title="Settings"
+                android:icon="@drawable/ic_account_settings"/>
+            <item
+                android:id="@+id/logout"
+                android:title="Logout"
+                android:icon="@drawable/ic_logout"/>
+        </menu>
+
+    </item>
+
+</menu>

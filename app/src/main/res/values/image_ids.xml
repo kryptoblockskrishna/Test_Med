@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <array name="health_pkgs">
+        <item>@drawable/family_checkup_package</item>
+        <item>@drawable/thyrocare_package</item>
+        <item>@drawable/basic_male_package</item>
+        <item>@drawable/basic_male_package</item>
+        <item>@drawable/discount_package</item>
+    </array>
+    <array name="home_bt_imgids">
+        <item>@drawable/blood_test</item>
+        <item>@drawable/blood_test</item>
+        <item>@drawable/blood_test</item>
+        <item>@drawable/blood_test</item>
+        <item>@drawable/blood_test</item>
+    </array>
+
+    <array name="home_dt_imgids">
+        <item>@drawable/box</item>
+        <item>@drawable/box</item>
+        <item>@drawable/box</item>
+        <item>@drawable/box</item>
+        <item>@drawable/box</item>
+        <item>@drawable/box</item>
+    </array>
+</resources>

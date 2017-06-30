@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.transenigma.mediappb">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".BaseActivity"
+            android:label="@string/app_name">
+
+        </activity>
+        <activity
+            android:name=".DoctorsList"
+            android:label="@string/title_activity_doctors_list"
+            android:parentActivityName=".BaseActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.transenigma.mediappb.BaseActivity" />
+        </activity>
+        <activity
+            android:name=".MyProfile"
+            android:label="@string/title_activity_my_profile"
+            android:parentActivityName=".BaseActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.transenigma.mediappb.BaseActivity" />
+        </activity>
+        <activity
+            android:name=".MyHealth"
+            android:label="@string/title_activity_my_health"
+            android:parentActivityName=".BaseActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.transenigma.mediappb.BaseActivity" />
+        </activity>
+        <activity
+            android:name=".Insurance"
+            android:label="@string/title_activity_insurance"
+            android:parentActivityName=".BaseActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.transenigma.mediappb.BaseActivity" />
+        </activity>
+        <activity android:name=".WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

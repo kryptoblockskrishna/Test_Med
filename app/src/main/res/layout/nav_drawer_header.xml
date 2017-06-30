@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/nav_background">
+
+    <ImageView
+        android:id="@+id/header_img"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="108dp"
+        android:layout_marginTop="39dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_user"/>
+
+    <TextView
+        android:id="@+id/header_name"
+        android:text="Subrato Mondal"
+        android:textColor="#1e1e1e"
+        android:textStyle="bold"
+        android:layout_below="@id/header_img"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp"
+        android:textSize="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/header_email"
+        android:text="subrato.mondal18@gmail.com"
+        android:textStyle="italic"
+        android:textColor="#1e1e1e"
+        android:layout_below="@id/header_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="2dp"
+        android:textSize="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
