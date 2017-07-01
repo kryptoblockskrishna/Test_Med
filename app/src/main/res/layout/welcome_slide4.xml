@@ -1,17 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_home"
-        />
+    android:background="@color/bg_screen4">
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/wel04_txt01"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome 4"/>
-</LinearLayout>
+        android:textSize="26sp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="150dp"
+        android:layout_below="@id/wel01_pic"
+        android:text="Now It's"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/wel04_pic"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:src="@drawable/thumbs_up"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/wel04_txt01"
+        app:civ_border_overlay="false"/>
+
+    <TextView
+        android:id="@+id/wel04_txt02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@id/wel04_pic"
+        android:text="Just"/>
+
+
+
+    <TextView
+        android:id="@+id/wel04_txt03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/wel04_txt02"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:text="HEALTH CHECK-UP"/>
+
+</RelativeLayout>

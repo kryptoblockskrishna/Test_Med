@@ -1,17 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_dashboard_black_24dp"
-        />
+    android:background="@color/bg_screen1">
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/wel01_txt01"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome 1"/>
+        android:textSize="21sp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="150dp"
+        android:text="No More"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/wel01_pic"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/queue"
+        app:civ_border_width="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/wel01_txt01"
+        app:civ_border_color="#FFFFBB14"/>
+
+    <TextView
+        android:id="@+id/wel01_txt02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@id/wel01_pic"
+        android:text="WAITING In Line"/>
+
+    <TextView
+        android:id="@+id/wel01_txt03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_below="@id/wel01_txt02"
+        android:text="For An Appointment, Coz"/>
+
+    <TextView
+        android:id="@+id/wel01_txt04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/wel01_txt03"
+        android:text="We Are At Your Service"/>
 
 
-</LinearLayout>
+</RelativeLayout>
