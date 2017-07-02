@@ -33,9 +33,7 @@ public class TrackFragment extends Fragment {
     ArrayList<ListProviderHomeBT> arrayListHmBT = new ArrayList<ListProviderHomeBT>();
     ArrayList<ListProviderHomeDT> arrayListHmDT = new ArrayList<ListProviderHomeDT>();
 
-    ImageView imageView;
-    int[] img_id ={R.drawable.services};
-    int j=0;
+
     String[] name, srvsTxt, btTitle, btPrice, dtTitle;
     public TrackFragment() {
         // Required empty public constructor
@@ -55,19 +53,7 @@ public class TrackFragment extends Fragment {
         });
         // Inflate the layout for this fragment
 
-        imageView =(ImageView)v.findViewById(R.id.home_bnr_image);
 
-        Runnable r = new Runnable(){
-            public void run(){
-                imageView.setImageResource(img_id[j]);
-                j++;
-                if (j>= img_id.length){
-                    j=0;
-                }
-                imageView.postDelayed(this,3000);
-            }
-        };
-        imageView.postDelayed(r,3000);
 
         recyclerVwSrvs =(RecyclerView)v.findViewById(R.id.home_srvs_rcyclrView);
         layoutManagerSrvs = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);

@@ -13,20 +13,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:id="@+id/home_bnr_image"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/welcome"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/home_bnr_image"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
@@ -43,146 +33,6 @@
                     android:layout_marginTop="5dp"
                     android:orientation="vertical"
                     android:background="#ded3d3">
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center_vertical">
-                        <ImageView
-                            android:layout_alignParentLeft="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_tutorial"
-                            android:paddingLeft="20dp"
-                            android:id="@+id/iv1"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tutorial"
-                            android:layout_toRightOf="@+id/iv1"
-                            android:paddingLeft="20dp"
-                            android:paddingTop="7dp"
-                            android:textColor="#021142"
-                            />
-                        <ImageView
-                            android:layout_alignParentRight="true"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_delete"
-                            android:layout_marginRight="10dp"
-                            />
-
-                    </RelativeLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="#8f8f8f"
-                        />
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center_vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_welcome"
-                            android:paddingLeft="20dp"
-                            android:layout_alignParentLeft="true"
-                            android:id="@+id/iv2"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Why TransHealth?"
-                            android:paddingLeft="20dp"
-                            android:textColor="#021142"
-                            android:layout_toRightOf="@+id/iv2"
-                            android:layout_marginTop="7dp"
-                            />
-                        <ImageView
-                            android:layout_alignParentRight="true"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_delete"
-                            android:layout_marginRight="10dp"
-                            />
-
-                    </RelativeLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="#8f8f8f"
-                        />
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_filter"
-                            android:paddingLeft="20dp"
-                            android:id="@+id/iv3"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Set Default Filter"
-                            android:paddingLeft="20dp"
-                            android:textColor="#021142"
-                            android:layout_toRightOf="@id/iv3"
-                            android:layout_marginTop="7dp"
-                            />
-                        <ImageView
-                            android:layout_alignParentRight="true"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_delete"
-                            android:layout_marginRight="10dp"
-                            />
-
-                    </RelativeLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="#8f8f8f"
-                        />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_profile_details"
-                            android:paddingLeft="20dp"
-                            android:id="@+id/iv4"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Full Your Details"
-                            android:paddingLeft="20dp"
-                            android:textColor="#021142"
-                            android:layout_toRightOf="@id/iv4"
-                            android:layout_marginTop="7dp"
-                            />
-                        <ImageView
-                            android:layout_alignParentRight="true"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/ic_delete"
-                            android:layout_marginRight="10dp"
-                            />
-
-                    </RelativeLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:background="#8f8f8f"
-                        />
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -265,6 +115,147 @@
                         android:layout_height="2dp"
                         android:background="#8f8f8f"
                         />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_filter"
+                            android:paddingLeft="20dp"
+                            android:id="@+id/iv3"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Set Default Filter"
+                            android:paddingLeft="20dp"
+                            android:textColor="#021142"
+                            android:layout_toRightOf="@id/iv3"
+                            android:layout_marginTop="7dp"
+                            />
+                        <ImageView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_delete"
+                            android:layout_marginRight="10dp"
+                            />
+
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#8f8f8f"
+                        />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_tutorial"
+                            android:paddingLeft="20dp"
+                            android:id="@+id/iv1"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tutorial"
+                            android:layout_toRightOf="@+id/iv1"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="7dp"
+                            android:textColor="#021142"
+                            />
+                        <ImageView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_delete"
+                            android:layout_marginRight="10dp"
+                            />
+
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#8f8f8f"
+                        />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_welcome"
+                            android:paddingLeft="20dp"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/iv2"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Why TransHealth?"
+                            android:paddingLeft="20dp"
+                            android:textColor="#021142"
+                            android:layout_toRightOf="@+id/iv2"
+                            android:layout_marginTop="7dp"
+                            />
+                        <ImageView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_delete"
+                            android:layout_marginRight="10dp"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#8f8f8f"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_profile_details"
+                            android:paddingLeft="20dp"
+                            android:id="@+id/iv4"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fill Your Details"
+                            android:paddingLeft="20dp"
+                            android:textColor="#021142"
+                            android:layout_toRightOf="@id/iv4"
+                            android:layout_marginTop="7dp"
+                            />
+                        <ImageView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_delete"
+                            android:layout_marginRight="10dp"
+                            />
+
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#8f8f8f"
+                        />
+
+
                 </LinearLayout>
 
 

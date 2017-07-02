@@ -48,6 +48,7 @@ public class DoctorsList extends AppCompatActivity {
 
         adapter = new RecyclerAdapterDocList(arrayList);
         recyclerView.setAdapter(adapter);
+         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 }

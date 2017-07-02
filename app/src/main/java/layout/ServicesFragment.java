@@ -37,14 +37,11 @@ public class ServicesFragment extends Fragment {
     ArrayList<ListProviderHomeBT> arrayListHmBT = new ArrayList<ListProviderHomeBT>();
     ArrayList<ListProviderHomeDT> arrayListHmDT = new ArrayList<ListProviderHomeDT>();
 
-    ImageView imageView;
-    int[] img_id ={R.drawable.welcome};
 
 
-    String[] name, srvsTxt, btTitle, btPrice, dtTitle;
 
 
-    int j=0;
+
 
     public ServicesFragment() {
         // Required empty public constructor
@@ -67,36 +64,8 @@ public class ServicesFragment extends Fragment {
             }
         });
 
-        /*recyclerView = (RecyclerView)v.findViewById(R.id.home_bnr_recyclerview);
-        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-
-        name = getResources().getStringArray(R.array.home_bnr_namearray);
-
-        int count=0;
-        for (String NAME : name){
-            ListProviderHomeBnr listProviderHomeBnr = new ListProviderHomeBnr(img_id[count]);
-            arrayList.add(listProviderHomeBnr);
-            count++;
-        }
-        adapter = new RecyclerAdapterHomeBnr(arrayList);
-        recyclerView.setAdapter(adapter);*/
 
 
-        imageView =(ImageView)v.findViewById(R.id.home_bnr_image);
-
-        Runnable r = new Runnable(){
-            public void run(){
-                imageView.setImageResource(img_id[j]);
-                j++;
-                if (j>= img_id.length){
-                    j=0;
-                }
-                imageView.postDelayed(this,3000);
-            }
-        };
-        imageView.postDelayed(r,3000);
 
 
         // recycler View for Health packages
