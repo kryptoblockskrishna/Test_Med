@@ -29,12 +29,12 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:background="@drawable/title_back_2"
-                app:layout_collapseMode="parallax"
-                />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:background="@drawable/title_back_2"
+            app:layout_collapseMode="parallax"
+            />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/my_profile_toolbar"

@@ -12,21 +12,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorBottomNavView">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:id="@+id/home_bnr_image"
-                android:scaleType="centerCrop"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/home_bnr_hosp1"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/home_my_cntntcrd"
-                android:layout_below="@+id/home_bnr_image"
                 android:orientation="vertical"
                 android:layout_marginTop="10dp"
+                android:visibility="gone"
                 >
                 <TextView
                     android:layout_width="match_parent"
@@ -53,11 +46,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:layout_below="@+id/home_my_cntntcrd"
                 android:id="@+id/home_bt_card">
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#7b7b7b"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
