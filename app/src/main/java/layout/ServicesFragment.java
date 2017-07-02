@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class ServicesFragment extends Fragment {
     ArrayList<ListProviderHomeDT> arrayListHmDT = new ArrayList<ListProviderHomeDT>();
 
     ImageView imageView;
-    int[] img_id ={R.drawable.home_bnr_hosp1,R.drawable.home_bnr_hosp2,R.drawable.home_bnr_newdept};
+    int[] img_id ={R.drawable.welcome};
 
 
     String[] name, srvsTxt, btTitle, btPrice, dtTitle;
@@ -54,6 +55,8 @@ public class ServicesFragment extends Fragment {
                             @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+        Toolbar toolbar = (Toolbar) v.findViewById(R.id.my_profile_toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_home);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -97,78 +100,6 @@ public class ServicesFragment extends Fragment {
 
 
         // recycler View for Health packages
-        recyclerVwSrvs =(RecyclerView)v.findViewById(R.id.home_srvs_rcyclrView);
-        layoutManagerSrvs = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-        recyclerVwSrvs.setLayoutManager(layoutManagerSrvs);
-        recyclerVwSrvs.setHasFixedSize(true);
-
-        srvsTxt = getResources().getStringArray(R.array.home_srvs);
-        TypedArray arsrv = this.getResources().obtainTypedArray(R.array.health_pkgs);
-        int lensrv = arsrv.length();
-        int[] img_id_pkgs = new int[lensrv];
-        for(int k=0; k<lensrv;k++){
-            img_id_pkgs[k] = arsrv.getResourceId(k,0);
-        }
-        arsrv.recycle();
-
-        int i=0;
-        for (String srv :srvsTxt){
-            ListProviderHomeServices lst = new ListProviderHomeServices(img_id_pkgs[i], srvsTxt[i]);
-            arrayListSrvs.add(lst);
-            i++;
-        }
-        adapterSrvs = new RecyclerAdapterHomeServices(arrayListSrvs);
-        recyclerVwSrvs.setAdapter(adapterSrvs);
-
-
-        // Recycler View for Blood test
-        recyclerVwHmBT =(RecyclerView)v.findViewById(R.id.home_bt_rcyclrView);
-        layoutManagerHmBT = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-        recyclerVwHmBT.setLayoutManager(layoutManagerHmBT);
-        recyclerVwHmBT.setHasFixedSize(true);
-        btTitle = getResources().getStringArray(R.array.home_bt_title);
-        btPrice = getResources().getStringArray(R.array.home_bt_price);
-        TypedArray arbt = this.getResources().obtainTypedArray(R.array.home_bt_imgids);
-        int lenbt = arbt.length();
-        int[] img_id_bt = new int[lenbt];
-        for(int k=0; k<lenbt;k++){
-            img_id_bt[k]= arbt.getResourceId(k,0);
-        }
-        arbt.recycle();
-
-        int n=0;
-        for(String NAME: btTitle){
-            ListProviderHomeBT l = new ListProviderHomeBT(img_id_bt[n],btTitle[n],btPrice[n]);
-            arrayListHmBT.add(l);
-            n++;
-        }
-        adapterHmBt = new RecyclerAdapterHomeBT(arrayListHmBT);
-        recyclerVwHmBT.setAdapter(adapterHmBt);
-
-        // Recycler View for Dyagnostics Test
-
-        recyclerVwHmDT = (RecyclerView)v.findViewById(R.id.home_dt_rcyclrView);
-        layoutManagerHmDT = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-        recyclerVwHmDT.setLayoutManager(layoutManagerHmDT);
-        recyclerVwHmDT.setHasFixedSize(true);
-
-        dtTitle= getResources().getStringArray(R.array.home_dt_title);
-        TypedArray ar = this.getResources().obtainTypedArray(R.array.home_dt_imgids);
-        int len = ar.length();
-        int[] hm_dt_imgids = new int[len];
-        for(int k =0; k<len; k++){
-            hm_dt_imgids[k]= ar.getResourceId(k,0);
-        }
-        ar.recycle();
-
-        int m=0;
-        for(String TITLE:dtTitle){
-            ListProviderHomeDT ldt = new ListProviderHomeDT(hm_dt_imgids[m],dtTitle[m]);
-            arrayListHmDT.add(ldt);
-            m++;
-        }
-        adapterHmDT = new RecyclerAdapterHomeDT(arrayListHmDT);
-        recyclerVwHmDT.setAdapter(adapterHmDT);
 
 
 

@@ -34,7 +34,7 @@ public class TrackFragment extends Fragment {
     ArrayList<ListProviderHomeDT> arrayListHmDT = new ArrayList<ListProviderHomeDT>();
 
     ImageView imageView;
-    int[] img_id ={R.drawable.home_bnr_hosp1,R.drawable.home_bnr_hosp2,R.drawable.home_bnr_newdept};
+    int[] img_id ={R.drawable.services};
     int j=0;
     String[] name, srvsTxt, btTitle, btPrice, dtTitle;
     public TrackFragment() {
