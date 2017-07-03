@@ -27,7 +27,6 @@ import layout.TrackFragment;
 public class BaseActivity extends AppCompatActivity {
 
 
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
