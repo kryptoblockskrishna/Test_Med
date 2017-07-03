@@ -12,11 +12,12 @@
     <style name="TabText" parent="Base.Widget.Design.TabLayout">
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">100sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="textAllCaps">false</item>
     </style>
 
     <style name="TitleCollapsed" parent="@android:style/TextAppearance">
-        <item name="android:textColor">#e7e7e7</item>
+        <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
     </style>

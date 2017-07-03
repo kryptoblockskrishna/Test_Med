@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.transenigma.mediappb.Register"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/register_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="transHealth"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="28dp"
+        android:layout_marginTop="50dp"
+        android:textStyle="italic"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_txtInpLay01"
+        android:layout_below="@id/register_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColorHint="#9FA8DA"
+        android:layout_marginTop="40dp">
+
+        <EditText
+            android:id="@+id/register_contactInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#fff"
+            android:inputType="number"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_txtInpLay02"
+        android:layout_below="@id/register_txtInpLay01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColorHint="#9FA8DA"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E-Mail Id"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#fff"
+            android:inputType="textEmailAddress"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_txtInpLay03"
+        android:layout_below="@id/register_txtInpLay02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColorHint="#9FA8DA"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/register_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#fff"
+            android:inputType="textPassword"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/register_txtInpLay04"
+        android:layout_below="@id/register_txtInpLay03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColorHint="#9FA8DA"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/register_passRe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Re-Enter Password"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#fff"
+            android:inputType="textPassword"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/register_btnLout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_txtInpLay04"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="#fff">
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="R E G I S T E R"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_margin="1dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/register_guest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_btnLout"
+        android:layout_marginTop="5dp"
+        android:text="Log-In As Guest"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="16dp"
+        android:onClick="toSignIn"/>
+
+    <TextView
+        android:id="@+id/register_toSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/register_guest"
+        android:layout_marginTop="50dp"
+        android:text="Already Have An Account? Sign-In"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="16dp"
+        android:onClick="toSignIn"/>
+
+</RelativeLayout>
