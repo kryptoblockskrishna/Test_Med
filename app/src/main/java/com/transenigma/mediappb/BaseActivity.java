@@ -2,6 +2,7 @@ package com.transenigma.mediappb;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import layout.AppointmentFragment;
 import layout.LogoutFragment;
@@ -25,6 +27,11 @@ import layout.SettingsFragment;
 import layout.TrackFragment;
 
 public class BaseActivity extends AppCompatActivity {
+
+    ImageView imageView;
+    int[] img_home ={R.drawable.welcome,R.drawable.appointment,R.drawable.services};
+    int img= img_home[0];
+    int j=0;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -36,16 +43,19 @@ public class BaseActivity extends AppCompatActivity {
             FragmentTransaction fT = fM.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    img = img_home[0];
                     ServicesFragment hF = new ServicesFragment();
                     fT.replace( R.id.content, hF);
                     fT.commit();
                     return true;
                 case R.id.navigation_appointment:
+                    img = img_home[1];
                     AppointmentFragment aF = new AppointmentFragment();
                     fT.replace( R.id.content, aF);
                     fT.commit();
                     return true;
                 case R.id.navigation_track:
+                    img=img_home[2];
                     TrackFragment tF = new TrackFragment();
                     fT.replace( R.id.content, tF);
                     fT.commit();
@@ -68,8 +78,21 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_layout);
+        toolbar = (Toolbar) findViewById(R.id.toolbarLayout);
         setSupportActionBar(toolbar);
+
+        imageView =(ImageView)findViewById(R.id.home_image);
+        Runnable r = new Runnable(){
+            public void run(){
+                imageView.setImageResource(img);
+                j++;
+                if (j>= 0){
+                    j=0;
+                }
+                imageView.postDelayed(this,3);
+            }
+        };
+        imageView.postDelayed(r,3);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -86,6 +109,7 @@ public class BaseActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
         getSupportActionBar().setTitle("transHealth");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // --------------------------------------------------------------------------------------------------
 
@@ -169,6 +193,13 @@ public class BaseActivity extends AppCompatActivity {
 
         actionBarDrawerToggle.syncState();
     }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        actionBarDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
     public void doctors(View V){
         Intent i= new Intent(BaseActivity.this, DoctorsList.class);
         startActivity(i);

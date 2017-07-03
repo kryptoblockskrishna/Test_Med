@@ -26,7 +26,6 @@
     <item
         android:title="   Account"
         android:id="@+id/navdraw_menu">
-
         <menu>
             <item
                 android:id="@+id/ac_settings"
