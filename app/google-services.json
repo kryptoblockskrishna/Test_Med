@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1042918376578",
+    "firebase_url": "https://transhealth-3c386.firebaseio.com",
+    "project_id": "transhealth-3c386",
+    "storage_bucket": "transhealth-3c386.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042918376578:android:ad64eba9ae6e0bf4",
+        "android_client_info": {
+          "package_name": "com.transenigma.mediappb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042918376578-qns17b0nhdfoup6ec0gp0jske3q2tej1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.transenigma.mediappb",
+            "certificate_hash": "7752b6cb00f37f661cab65f7cf10fc3d58f5b064"
+          }
+        },
+        {
+          "client_id": "1042918376578-rqfoaari2eek6q886c31jfaoqa4e2lgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIFbTJ7I2JuWJg7L1j9Tp4TKR3-L3NgtE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042918376578-rqfoaari2eek6q886c31jfaoqa4e2lgm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

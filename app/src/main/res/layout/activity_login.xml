@@ -17,7 +17,8 @@
         android:gravity="center"
         android:textColor="#fff"
         android:textSize="28dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:textStyle="italic"/>
 
     <android.support.design.widget.TextInputLayout
@@ -35,10 +36,10 @@
             android:id="@+id/login_contactInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Contact Number"
-            android:textColor="@color/colorAccent"
+            android:hint="Email ID"
+            android:textColor="#2196F3"
             android:backgroundTint="#fff"
-            android:inputType="number"/>
+            android:inputType="textEmailAddress"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -58,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColor="@color/colorAccent"
+            android:textColor="#2196F3"
             android:backgroundTint="#fff"
             android:inputType="textPassword"/>
 
@@ -76,16 +77,18 @@
         android:layout_marginBottom="10dp"
         android:background="#fff">
 
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="L o g i n"
-        android:textColor="#fff"
-        android:textSize="16dp"
-        android:layout_margin="1dp" />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="L o g i n"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:layout_margin="1dp"
+            android:clickable="true" />
+
     </LinearLayout>
 
     <TextView
@@ -97,7 +100,8 @@
         android:textSize="13dp"
         android:textColor="#fff"
         android:layout_margin="20dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:onClick="toForgetPassword"/>
 
     <LinearLayout
         android:id="@+id/login_extra"
@@ -146,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/login_extra"
         android:layout_marginTop="25dp"
-        android:text="New User? Create New Accout"
+        android:text="New User? Create New Account"
         android:gravity="center"
         android:textColor="#fff"
         android:textSize="16dp"
