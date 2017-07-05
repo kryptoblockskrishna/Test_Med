@@ -32,26 +32,26 @@
     <string name="drawer_close">Drawer Close</string>
 
 
-    <string-array name="recent_search_hosp">
+    <string-array name="rcy_pin_hosp">
         <item>Hospital B</item>
         <item>Hospital C</item>
         <item>Hospital A</item>
         <item>Hospital B</item>
         <item>Hospital C</item>
     </string-array>
-    <string-array name="recent_search_dept">
+    <string-array name="rcy_pin_dept">
         <item>Department A</item>
         <item>Department C</item>
         <item>Department A</item>
         <item>Department B</item>
         <item>Department C</item>
     </string-array>
-    <string-array name="recent_search_city">
-        <item>Kolkata</item>
-        <item>Kolkata</item>
-        <item>Mumbai</item>
-        <item>Mumbai</item>
-        <item>Kolkata</item>
+    <string-array name="rcy_pin_doc_name">
+        <item>Radha Raman</item>
+        <item>Mukunda</item>
+        <item>Radha Madan Mohan</item>
+        <item>Radha Govind</item>
+        <item>Radha Shyam Sundar</item>
     </string-array>
     <string-array name="recent_search_state">
         <item>West Bengal</item>
