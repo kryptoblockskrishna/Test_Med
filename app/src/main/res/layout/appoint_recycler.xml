@@ -5,9 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     >
+    <TextView
+        android:id="@+id/rcy_pin_doc_tv1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/cardview_dark_background"/>
+
    <ImageView
+       android:layout_below="@id/rcy_pin_doc_tv1"
        android:layout_width="50dp"
        android:layout_height="50dp"
        android:src="@drawable/ic_person"
@@ -17,6 +26,7 @@
        android:id="@+id/rcy_pin_doc_iv1"/>
     <RelativeLayout
         android:layout_toRightOf="@id/rcy_pin_doc_iv1"
+        android:layout_below="@id/rcy_pin_doc_tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -26,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="Dr.Raman"
             android:textColor="#101010"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:id="@+id/rcy_pin_doc_name"/>
         <TextView
             android:layout_width="wrap_content"
@@ -46,12 +56,5 @@
 
 
     </RelativeLayout>
-    <TextView
-        android:layout_below="@id/rcy_pin_doc_iv1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/cardview_dark_background"/>
+
 </RelativeLayout>

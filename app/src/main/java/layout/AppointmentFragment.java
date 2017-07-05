@@ -15,8 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ import com.transenigma.mediappb.R;
 import java.util.ArrayList;
 
 import static com.transenigma.mediappb.R.id.parent;
+import static com.transenigma.mediappb.R.id.scrollView;
 import static com.transenigma.mediappb.R.id.start;
 import static com.transenigma.mediappb.R.id.tabMode;
 import static com.transenigma.mediappb.R.id.wrap;
@@ -42,8 +45,9 @@ public class AppointmentFragment extends Fragment {
         // Required empty public constructor
     }*/
     CardView c1,c2;
-    TextView t1;
-    LinearLayout l1;
+    TextView t1,t2;
+    ImageView iv1,iv2,iv3;
+    ScrollView sv1;
     ViewGroup.LayoutParams lp1;
     ViewGroup.LayoutParams lp2;
     int i1=0 ,i2 = 0;
@@ -67,21 +71,28 @@ public class AppointmentFragment extends Fragment {
         c1= (CardView)v.findViewById(R.id.pinned_doctors_card);
         c2=(CardView)v.findViewById(R.id.search_doc_card);
         t1=(TextView)v.findViewById(R.id.pinned_doc_text);
-        l1=(LinearLayout) v.findViewById(R.id.search_doc_ll);
+        t2=(TextView) v.findViewById(R.id.search_doc_text);
+        iv1=(ImageView) v.findViewById(R.id.pin_doc_arrow);
+        iv2=(ImageView) v.findViewById(R.id.search_doc_arrow);
+
         lp1=  c1.getLayoutParams();
         lp2=  c2.getLayoutParams();
 
-        lp1.height=220*5-200;
+        lp1.height=220;
         c1.setLayoutParams(lp1);
 
         lp2.height=0;
         c2.setLayoutParams(lp2);
-
-        //c1.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,20));
-        //c2.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,20));
+        sv1 = (ScrollView)v.findViewById(R.id.search_doc_sv1);
 
         recyclerView = (RecyclerView)v.findViewById(R.id.appoint_recycler);
         layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        layoutManager = new LinearLayoutManager(v.getContext()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
@@ -98,6 +109,15 @@ public class AppointmentFragment extends Fragment {
         adapter = new AppointRecyclerAdapter(appoints);
         recyclerView.setAdapter(adapter);
 
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(v.getContext(), new RecyclerItemClickListener.OnItemClickListener(){
+                    @Override
+                    public void OnItemClick(View v, int position) {
+                        Toast.makeText(v.getContext(), "pos = " + position, Toast.LENGTH_SHORT).show();
+                    }
+                })
+        );
+
         t1.setOnClickListener(new AdapterView.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -106,36 +126,71 @@ public class AppointmentFragment extends Fragment {
                     lp2.height=0;
                     c1.setLayoutParams(lp1);
                     c2.setLayoutParams(lp2);
+                    iv1.animate().rotation(180).setDuration(100).start();
+                    iv2.animate().rotation(0).setDuration(100).start();
                     i2=0;
                     i1=1;
+                    layoutManager = new LinearLayoutManager(v.getContext()){
+
+                        @Override
+                        public boolean canScrollVertically() {
+                            return super.canScrollVertically();
+                        }
+                    };
+                    recyclerView.setLayoutManager(layoutManager);
                 }
                 else {
                     lp1.height=220;
                     c1.setLayoutParams(lp1);
+                    iv1.animate().rotation(0).setDuration(100).start();
                     i1=0;
+                    layoutManager = new LinearLayoutManager(v.getContext()){
+                        @Override
+                        public boolean canScrollVertically() {
+                            return false;
+                        }
+                    };
+                    recyclerView.setLayoutManager(layoutManager);
                 }
             }
         });
 
-        l1.setOnClickListener(new AdapterView.OnClickListener(){
+        t2.setOnClickListener(new AdapterView.OnClickListener(){
             @Override
             public void onClick(View v) {
                 if(i2==0){
-                    lp2.height=770;
+                    lp2.height=870;
                     c2.setLayoutParams(lp2);
                     i2=1;
                     lp1.height=220;
                     c1.setLayoutParams(lp1);
+                    iv1.animate().rotation(0).setDuration(100).start();
+                    iv2.animate().rotation(180).setDuration(100).start();
+                    recyclerView.smoothScrollToPosition(0);
+                    recyclerView.setLayoutManager(layoutManager);
                     i1=0;
+                    sv1.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            sv1.fullScroll(View.FOCUS_DOWN);
+                        }
+                    });
                 }
                 else {
                     lp2.height=0;
                     c2.setLayoutParams(lp2);
+                    iv2.animate().rotation(0).setDuration(100).start();
                     i2=0;
                 }
             }
         });
 
+        layoutManager = new LinearLayoutManager(v.getContext()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
 
         /*hosp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

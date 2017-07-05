@@ -5,43 +5,81 @@
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     tools:context="layout.AppointmentFragment"
-    android:background="@color/cardview_dark_background"
+    android:background="#b9b2b2"
     >
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="#b9b2b2"
+        android:id="@+id/search_doc_sv1"
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#ffffff">
+            android:background="#b9b2b2">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#716060"/>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/pinned_doc_text"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Preferred Doctors"
-                    android:textColor="#393939"
-                    android:textSize="20sp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
+                    android:background="#ded3d3"
                     android:elevation="5dp"
-                    android:paddingBottom="10dp"
-                    android:clickable="true"
-                    android:background="#ded3d3"/>
+                    >
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="70dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:scaleType="centerInside"
+                        android:elevation="5dp"
+                        android:src="@drawable/ic_starfilled"
+                        android:id="@+id/pinned_doc_iv"/>
+
+                    <TextView
+                        android:id="@+id/pinned_doc_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:text="Preferred Doctors"
+                        android:textColor="#021142"
+                        android:textSize="14sp"
+                        android:paddingLeft="70dp"
+                        android:paddingTop="15dp"
+                        android:paddingBottom="10dp"
+                        android:clickable="true" />
+                    <TextView
+                        android:layout_toRightOf="@id/pinned_doc_iv"
+                        android:textSize="12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="(Click to Book Appointment)"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="10dp"/>
+                    <ImageView
+                        android:id="@+id/pin_doc_arrow"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_circle_arrow"
+                        android:scaleType="centerInside"/>
+                </RelativeLayout>
+
                 <android.support.v7.widget.CardView
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/pinned_doctors_card"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="37dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     card_view:cardCornerRadius="4dp"
@@ -53,14 +91,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:clickable="true">
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/appoint_recycler"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
-                            android:paddingTop="5dp"
+                            android:clickable="true"
                             app:layoutManager="android.support.v7.widget.LinearLayoutManager">
 
                         </android.support.v7.widget.RecyclerView>
@@ -71,43 +110,64 @@
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_search"
+                    android:elevation="5dp"
+                    android:id="@+id/search_doc_iv"
+                    android:background="#ded3d3"/>
+                <TextView
+                    android:layout_toRightOf="@id/search_doc_iv"
+                    android:id="@+id/search_doc_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="#ded3d3"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="15dp"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:text="Search a Doctor"
+                    android:textColor="#021142"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_toRightOf="@id/search_doc_iv"
+                    android:textSize="12sp"
+                    android:layout_marginTop="40dp"
+                    android:elevation="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:elevation="8dp"
-                    android:id="@+id/search_doc_ll">
-                    <TextView
-                        android:id="@+id/search_doc_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#ded3d3"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="10dp"
-                        android:clickable="true"
-                        android:text="Search a Doctor"
-                        android:textColor="#393939"
-                        android:textSize="20sp" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Click to search for Doctors"
-                        android:paddingBottom="5dp"
-                        android:paddingLeft="10dp"
-                        android:background="#ded3d3"
-                        />
-                </LinearLayout>
+                    android:text="(Click to search for Doctors)"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:background="#ded3d3"
+                    android:id="@+id/textView2" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:elevation="5dp"
+                    android:id="@+id/search_doc_arrow"
+                    android:src="@drawable/ic_circle_arrow"
+                    android:scaleType="centerInside"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"/>
+
 
                 <android.support.v7.widget.CardView
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/search_doc_card"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginTop="58dp"
+                    android:layout_marginTop="60dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     card_view:cardCornerRadius="4dp"
@@ -134,7 +194,6 @@
                                 android:id="@+id/appoint_city_layout"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
                                 android:orientation="vertical"
                                 android:layout_weight="1">
 
@@ -238,7 +297,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginTop="2dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginBottom="20dp"
                                 android:elevation="2dp"
                                 android:background="#ccc3c3" />
 
@@ -252,7 +311,7 @@
                                 android:layout_below="@id/select_department"
                                 android:layout_centerInParent="true"
                                 android:layout_marginRight="10dp"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginBottom="20dp"
                                 android:textColor="@color/colorPrimary"
                                 android:onClick="doctors"
                                 />

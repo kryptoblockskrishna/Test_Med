@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,10 +21,10 @@ public class AppointRecyclerAdapter extends RecyclerView.Adapter<AppointRecycler
     public AppointRecyclerAdapter(ArrayList<ListProviderAppoint> arrayList){
         this.appoints = arrayList;
     }
-    public static class ViewHolderAppoint extends RecyclerView.ViewHolder{
+    public static class ViewHolderAppoint extends RecyclerView.ViewHolder {
         TextView hosp,dept,name;
         ImageView pic;
-        public ViewHolderAppoint(View view){
+        private ViewHolderAppoint(View view){
             super(view);
 
             hosp =(TextView)view.findViewById(R.id.rcy_pin_doc_hosp);
@@ -31,6 +32,8 @@ public class AppointRecyclerAdapter extends RecyclerView.Adapter<AppointRecycler
             name =(TextView)view.findViewById(R.id.rcy_pin_doc_name);
             pic =(ImageView) view.findViewById(R.id.rcy_pin_doc_iv1);
         }
+
+
     }
 
     @Override
@@ -51,6 +54,9 @@ public class AppointRecyclerAdapter extends RecyclerView.Adapter<AppointRecycler
         holder.dept.setText(l.getDept());
         holder.hosp.setText(l.getHosp());
     }
+
+
+
 
     @Override
     public int getItemCount() {
