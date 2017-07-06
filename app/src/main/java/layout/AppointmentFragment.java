@@ -115,6 +115,8 @@ public class AppointmentFragment extends Fragment {
                     @Override
                     public void OnItemClick(View v, int position) {
                         Intent i = new Intent(v.getContext(), Doctors_Profile.class);
+                        i.putExtra("Calling_From",0);
+                        i.putExtra("Position",position);
                         startActivity(i);
                     }
                 })

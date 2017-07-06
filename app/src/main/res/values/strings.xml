@@ -46,6 +46,13 @@
         <item>Department B</item>
         <item>Department C</item>
     </string-array>
+    <string-array name="rcy_pin_speciality">
+        <item>Heart Specialist</item>
+        <item>Ophthalmologist</item>
+        <item>General Physician</item>
+        <item>Psychiatrist</item>
+        <item>Orthopaedic</item>
+    </string-array>
     <string-array name="rcy_pin_doc_name">
         <item>Radha Raman</item>
         <item>Mukunda</item>
@@ -53,13 +60,28 @@
         <item>Radha Govind</item>
         <item>Radha Shyam Sundar</item>
     </string-array>
-    <string-array name="recent_search_state">
-        <item>West Bengal</item>
-        <item>West Bengal</item>
-        <item>Maharastra</item>
-        <item>West Bengal</item>
-        <item>West Bengal</item>
+    <string-array name="rcy_pin_deg">
+        <item>MBBS</item>
+        <item>MBBS1</item>
+        <item>MBBS2</item>
+        <item>MBBS3</item>
+        <item>MBBS4</item>
     </string-array>
+    <string-array name="rcy_pin_avail">
+        <item>Mon, Tue &amp; Wed</item>
+        <item>Thu, Fri &amp; Sat</item>
+        <item>Fri, Sat &amp; Sun</item>
+        <item>Mon, Tue, Wed, Thu, Fri &amp; Wed</item>
+        <item>Mon, Tue &amp; Wed</item>
+    </string-array>
+    <string-array name="rcy_pin_from">
+        <item>9Am-5Pm</item>
+        <item>2PM-7PM</item>
+        <item>9AM-1Pm &amp; 5PM-8PM</item>
+        <item>4PM-9PM</item>
+        <item>9AM-12.30PM</item>
+    </string-array>
+
 
 
     <string-array name="locale">
@@ -75,13 +97,13 @@
         <item>Hospital B</item>
         <item>Hospital C</item>
     </string-array>
-
     <string-array name="department">
         <item>Select</item>
         <item>Department A</item>
         <item>Department B</item>
         <item>Department C</item>
     </string-array>
+
     <string-array name="doctor">
         <item>Ram</item>
         <item>Mukunda</item>
@@ -94,7 +116,6 @@
         <item>Shyam Sundar</item>
         <item>Damodar</item>
     </string-array>
-
     <string-array name="degree">
         <item>Mbbs, MD</item>
         <item>Mbbs, FRCS</item>
@@ -107,20 +128,30 @@
         <item>Mbbs, MD Ophthalmology</item>
         <item>Mbbs, MD ENT</item>
     </string-array>
-
     <string-array name="hospitals">
-        <item>General Physician, Apollo</item>
-        <item>General Physician, Balaji Nursing Home</item>
-        <item>Heart Specialist, Apollo</item>
-        <item>Ophthalmologist, Calcutta Medical Institute</item>
-        <item> ENT Specialist, DESUN</item>
-        <item>Dentist, AMRI</item>
-        <item>Ophthalmologist, DESUN</item>
-        <item>ENT Specialist, Apollo</item>
-        <item> Ophthalmologist, Calcutta Medical Institute</item>
-        <item>ENT Specialist, Apollo</item>
+        <item>Apollo</item>
+        <item>Balaji Nursing Home</item>
+        <item>Apollo</item>
+        <item>Calcutta Medical Institute</item>
+        <item>DESUN</item>
+        <item>AMRI</item>
+        <item>DESUN</item>
+        <item>Apollo</item>
+        <item>Calcutta Medical Institute</item>
+        <item>Apollo</item>
     </string-array>
-
+    <string-array name="search_dept">
+        <item>Heart Specialist</item>
+        <item>Ophthalmologist</item>
+        <item>General Physician</item>
+        <item>Psychiatrist</item>
+        <item>ENT Specialist</item>
+        <item>Orthopaedic</item>
+        <item>Dentist</item>
+        <item>Ophthalmologist</item>
+        <item>Heart Specialist</item>
+        <item>General Physician</item>
+    </string-array>
     <string-array name="availability">
         <item>Mon, Tue, Wed</item>
         <item>Wed, Thu, Fri</item>
@@ -132,6 +163,18 @@
         <item>Wed, Thu, Fri</item>
         <item>Thu, Fri Sat</item>
         <item>Wed, Thu, Fri</item>
+    </string-array>
+    <string-array name="search_from">
+        <item>9Am-5Pm</item>
+        <item>2PM-7PM</item>
+        <item>9AM-1Pm &amp; 5PM-8PM</item>
+        <item>4PM-9PM</item>
+        <item>9AM-12.30PM</item>
+        <item>9Am-5Pm</item>
+        <item>2PM-7PM</item>
+        <item>9AM-1Pm &amp; 5PM-8PM</item>
+        <item>4PM-9PM</item>
+        <item>9AM-12.30PM</item>
     </string-array>
 
     <string-array name="HomeUpcomingNames">

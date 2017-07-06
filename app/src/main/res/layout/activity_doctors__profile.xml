@@ -25,7 +25,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/doc_pro_title"
+            android:text="Doctors Details"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:textColor="#454e6d"
+            android:textSize="16sp"
+            android:gravity=""/>
+
         <LinearLayout
+            android:layout_below="@id/doc_pro_title"
             android:layout_width="105dp"
             android:layout_height="105dp"
             android:gravity="center"
@@ -34,11 +46,13 @@
             android:background="#432f2f"
             android:id="@+id/doc_pro_iv1">
             <ImageView
+                android:id="@+id/doc_pro_pic"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:src="@drawable/ic_profile2"/>
         </LinearLayout>
         <TextView
+            android:layout_below="@id/doc_pro_title"
             android:layout_toRightOf="@+id/doc_pro_iv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
