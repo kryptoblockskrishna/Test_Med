@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.transenigma.mediappb.AppointRecyclerAdapter;
 import com.transenigma.mediappb.BaseActivity;
 import com.transenigma.mediappb.DoctorsList;
+import com.transenigma.mediappb.Doctors_Profile;
 import com.transenigma.mediappb.ListProviderAppoint;
 import com.transenigma.mediappb.R;
 
@@ -113,7 +114,8 @@ public class AppointmentFragment extends Fragment {
                 new RecyclerItemClickListener(v.getContext(), new RecyclerItemClickListener.OnItemClickListener(){
                     @Override
                     public void OnItemClick(View v, int position) {
-                        Toast.makeText(v.getContext(), "pos = " + position, Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(v.getContext(), Doctors_Profile.class);
+                        startActivity(i);
                     }
                 })
         );
