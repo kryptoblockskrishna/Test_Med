@@ -1,5 +1,6 @@
 package com.transenigma.mediappb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import java.util.ArrayList;
+
+import layout.RecyclerItemClickListener;
 
 public class DoctorsList extends AppCompatActivity {
 
@@ -48,6 +51,17 @@ public class DoctorsList extends AppCompatActivity {
 
         adapter = new RecyclerAdapterDocList(arrayList);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void OnItemClick(View v, int position) {
+                        Intent i = new Intent(v.getContext(), Doctors_Profile.class);
+                        i.putExtra("Calling_From",1);
+                        i.putExtra("Position",position);
+                        startActivity(i);
+                    }
+                })
+        );
          getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

@@ -11,6 +11,8 @@ import android.graphics.drawable.ColorDrawable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import android.support.v7.widget.CardView;
 import android.text.format.DateFormat;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -35,6 +38,11 @@ import java.util.Locale;
  * A simple {@link Fragment} subclass.
  */
 public class MyProTab1 extends Fragment {
+
+    TextView t1,t2;
+    CardView c0,c1,c2,c3;
+    int i1,i2;
+    ImageView iv1,iv2;
 
     /*Spinner spinner;
     int[] a ={R.array.Marital_status,R.array.Gender,R.array.Email,R.array.Contact_No,
@@ -62,6 +70,73 @@ public class MyProTab1 extends Fragment {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
         }*/
+
+        t1 = (TextView)view.findViewById(R.id.my_pro_title1);
+        t2 = (TextView)view.findViewById(R.id.my_pro_title2);
+        c1 = (CardView)view.findViewById(R.id.my_pro_card1);
+        c0 = (CardView)view.findViewById(R.id.my_pro_card0);
+        c2 = (CardView)view.findViewById(R.id.my_pro_card2);
+        c3 = (CardView)view.findViewById(R.id.my_pro_card3);
+        iv1 = (ImageView)view.findViewById(R.id.my_pro_arrow1);
+        iv2 = (ImageView)view.findViewById(R.id.my_pro_arrow2);
+        c1.setVisibility(View.GONE);        // c1, c2 are main cards, c0,c3 are hint messages.
+        c2.setVisibility(View.GONE);
+        c0.setVisibility(View.VISIBLE);
+        c3.setVisibility(View.VISIBLE);
+        iv1.animate().rotation(0).setDuration(100).start();
+        iv2.animate().rotation(0).setDuration(100).start();
+        i1=0;i2=0;
+
+        t1.setOnClickListener(new AdapterView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(i1==0){
+                    c1.setVisibility(View.VISIBLE);
+                    c0.setVisibility(View.GONE);
+                    c2.setVisibility(View.GONE);
+                    c3.setVisibility(View.VISIBLE);
+                    i1=1;i2=0;
+                    iv1.animate().rotation(180).setDuration(100).start();
+                    iv2.animate().rotation(0).setDuration(100).start();
+                }
+                else {
+                    c1.setVisibility(View.GONE);
+                    c0.setVisibility(View.VISIBLE);
+                    c2.setVisibility(View.GONE);
+                    c3.setVisibility(View.VISIBLE);
+                    i1=0;i2=0;
+
+                    iv1.animate().rotation(0).setDuration(100).start();
+                    iv2.animate().rotation(0).setDuration(100).start();
+                }
+
+            }
+        });
+        t2.setOnClickListener(new AdapterView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(i2==0){
+                    c1.setVisibility(View.GONE);
+                    c0.setVisibility(View.VISIBLE);
+                    c2.setVisibility(View.VISIBLE);
+                    c3.setVisibility(View.GONE);
+                    i1=0;
+                    i2=1;
+                    iv1.animate().rotation(0).setDuration(100).start();
+                    iv2.animate().rotation(180).setDuration(100).start();
+                }
+                else {
+                    c1.setVisibility(View.GONE);
+                    c0.setVisibility(View.VISIBLE);
+                    c2.setVisibility(View.GONE);
+                    c3.setVisibility(View.VISIBLE);
+                    i1=0;i2=0;
+                    iv1.animate().rotation(0).setDuration(100).start();
+                    iv2.animate().rotation(0).setDuration(100).start();
+                }
+            }
+        });
+
         final LinearLayout l = (LinearLayout)view.findViewById(R.id.mypro_hidden_layout);
         l.setVisibility(View.GONE);
         final LinearLayout aadhaar = (LinearLayout)view.findViewById(R.id.mypro_aadhaar);

@@ -23,7 +23,8 @@
                 android:theme="@style/AppTheme.AppBarOverlay">
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#9a7048">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="200dp"

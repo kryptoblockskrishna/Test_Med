@@ -29,7 +29,7 @@ import layout.TrackFragment;
 public class BaseActivity extends AppCompatActivity {
 
     ImageView imageView;
-    int[] img_home ={R.drawable.welcome,R.drawable.appointment,R.drawable.services};
+    int[] img_home ={R.drawable.welcome,R.drawable.book_appointment,R.drawable.services};
     int img= img_home[0];
     int j=0;
 
