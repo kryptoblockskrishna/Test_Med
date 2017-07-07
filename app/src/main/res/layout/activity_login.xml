@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.transenigma.mediappb.Login"
+    android:background="@color/colorPrimary">
+
+
+    <TextView
+        android:id="@+id/login_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="transHealth"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="28dp"
+        android:layout_marginTop="50dp"
+        android:textStyle="italic"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/login_txtInpLay01"
+        android:layout_below="@id/login_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColorHint="#9FA8DA"
+        android:layout_marginTop="40dp">
+
+        <EditText
+            android:id="@+id/login_contactInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#fff"
+            android:inputType="number"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/login_txtInpLay02"
+        android:layout_below="@id/login_txtInpLay01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textColorHint="#9FA8DA"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/login_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textColor="@color/colorAccent"
+            android:backgroundTint="#fff"
+            android:inputType="textPassword"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/login_btnLout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_txtInpLay02"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="#fff">
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="L o g i n"
+        android:textColor="#fff"
+        android:textSize="16dp"
+        android:layout_margin="1dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/login_passRecover"
+        android:layout_below="@id/login_btnLout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forgot Your Password?"
+        android:textSize="13dp"
+        android:textColor="#fff"
+        android:layout_margin="20dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/login_extra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_passRecover"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#5C6BC0"
+            android:paddingBottom="1dp"
+            android:layout_marginRight="14dp">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="#5C6BC0"
+            android:paddingBottom="1dp"
+            android:layout_marginLeft="14dp">
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_passRecover"
+        android:text="OR"
+        android:textSize="12dp"
+        android:textColor="#5C6BC0"
+        android:gravity="center"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/login_toSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_extra"
+        android:layout_marginTop="25dp"
+        android:text="New User? Create New Accout"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="16dp"
+        android:onClick="toSignUp"/>
+
+</RelativeLayout>

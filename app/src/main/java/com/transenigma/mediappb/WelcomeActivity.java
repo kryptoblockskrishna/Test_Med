@@ -22,9 +22,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private WelcomeViewPagerAdapter myViewPagerAdapter;
-    private LinearLayout dotsLayout;
-    private TextView[] dots;
-    private int[] layouts;
+    private LinearLayout dotsLinearLayout;
+    private TextView[] dots_txtVw_arr;
+    private int[] layouts_int_arr;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
 
@@ -47,15 +47,22 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
+        dotsLinearLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
 
         //welcome layouts
-        layouts = new int[]{R.layout.welcome_slide1,
-        R.layout.welcome_slide2,R.layout.welcome_slide3,R.layout.welcome_slide4};
+        layouts_int_arr = new int[]{
+                R.layout.welcome_slide1,
+                R.layout.welcome_slide2,
+                R.layout.welcome_slide3,
+                R.layout.welcome_slide4
+        };
+
         addBottomDots(0);
+
         changeStatusBarColor();
+
         myViewPagerAdapter = new WelcomeViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
@@ -66,13 +73,14 @@ public class WelcomeActivity extends AppCompatActivity {
                 launchHomeScreen();
             }
         });
+
         btnNext.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 // checking for last page
                 // if last page home screen will be launched
                 int current = getItem(+1);
-                if(current<layouts.length){
+                if(current<layouts_int_arr.length){
                     viewPager.setCurrentItem(current);
                 }
                 else {
@@ -82,26 +90,29 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
     }
-    private void addBottomDots(int currentPage){
-        dots = new TextView[layouts.length];
+
+    private void addBottomDots(int currentPage) {
+        dots_txtVw_arr = new TextView[layouts_int_arr.length];
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInActive = getResources().getIntArray(R.array.array_dot_inactive);
 
-        dotsLayout.removeAllViews();
-        for(int i =0; i<dots.length;i++){
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(colorsInActive[currentPage]);
-            dotsLayout.addView(dots[i]);
+        dotsLinearLayout.removeAllViews();
+        for(int i =0; i<dots_txtVw_arr.length;i++){
+            dots_txtVw_arr[i] = new TextView(this);
+            dots_txtVw_arr[i].setText(Html.fromHtml("&#8226;"));
+            dots_txtVw_arr[i].setTextSize(35);
+            dots_txtVw_arr[i].setTextColor(colorsInActive[currentPage]);
+            dotsLinearLayout.addView(dots_txtVw_arr[i]);
         }
-        if(dots.length>0)
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
+        if(dots_txtVw_arr.length>0)
+            dots_txtVw_arr[currentPage].setTextColor(colorsActive[currentPage]);
     }
+
     private int getItem(int i){
         return viewPager.getCurrentItem() + i;
 
     }
+
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
         startActivity(new Intent(WelcomeActivity.this, BaseActivity.class));
@@ -120,7 +131,7 @@ public class WelcomeActivity extends AppCompatActivity {
             addBottomDots(position);
 
             // changing next button text from next to gotit
-            if (position == layouts.length -1){
+            if (position == layouts_int_arr.length -1){
                 btnNext.setText(getString(R.string.start));
                 btnSkip.setVisibility(View.GONE);
             }
@@ -146,6 +157,7 @@ public class WelcomeActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
+
     //View Pager Adapter
     public class WelcomeViewPagerAdapter extends PagerAdapter{
         private LayoutInflater layoutInflater;
@@ -155,14 +167,14 @@ public class WelcomeActivity extends AppCompatActivity {
 
         public Object instantiateItem(ViewGroup container, int position){
             layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view= layoutInflater.inflate(layouts[position],container,false);
+            View view= layoutInflater.inflate(layouts_int_arr[position],container,false);
             container.addView(view);
             return view;
         }
 
         @Override
         public int getCount() {
-            return layouts.length;
+            return layouts_int_arr.length;
         }
 
         @Override

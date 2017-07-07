@@ -33,6 +33,7 @@ public class BaseActivity extends AppCompatActivity {
     int img= img_home[0];
     int j=0;
 
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
