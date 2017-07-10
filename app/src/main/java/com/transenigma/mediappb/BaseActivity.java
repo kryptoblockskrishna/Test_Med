@@ -359,13 +359,14 @@ public class BaseActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.logout :
-                        fragmentTransaction = fM.beginTransaction();
-                        fragmentTransaction.replace(R.id.content, new LogoutFragment());
-                        fragmentTransaction.commit();
+                        mAuth.signOut();
+                        //------ ?? ---------------------------------
+                        mAuth.removeAuthStateListener(mAuthListener);
 
-                        getSupportActionBar().setTitle("transHealth");
-                        item.setChecked(true);
-                        drawerLayout.closeDrawers();
+                        Intent toSignIn = new Intent(BaseActivity.this, Login.class);
+                        startActivity(toSignIn);
+                        finish();
+
                         break;
                 }
 
