@@ -26,8 +26,8 @@
 
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content"
+                    android:background="#9a7048">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
@@ -70,9 +70,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/colorBottomNavView"
-            android:elevation="8dp"
             app:itemTextColor="#626161"
-            app:menu="@menu/navigation" />
+            app:menu="@menu/navigation"
+            android:elevation="8dp"/>
 
     </LinearLayout>
 

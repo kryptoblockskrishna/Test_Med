@@ -43,7 +43,7 @@ public class BaseActivity extends AppCompatActivity {
 
     ImageView imageView;
     int[] img_home ={R.drawable.welcome,R.drawable.appointment,R.drawable.services};
-    int img = img_home[0];
+    int img= img_home[0];
     int j=0;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -308,9 +308,8 @@ public class BaseActivity extends AppCompatActivity {
         Menu menu= navigationView.getMenu();
         MenuItem account = menu.findItem(R.id.navdraw_menu);
         SpannableString s = new SpannableString(account.getTitle());
-        s.setSpan(new TextAppearanceSpan(BaseActivity.this,R.style.NavDraw_Menu_Title),0,s.length(),0);
+        s.setSpan(new TextAppearanceSpan(this,R.style.NavDraw_Menu_Title),0,s.length(),0);
         account.setTitle(s);
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -360,14 +359,13 @@ public class BaseActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.logout :
-                        mAuth.signOut();
-                        //------ ?? ---------------------------------
-                        mAuth.removeAuthStateListener(mAuthListener);
+                        fragmentTransaction = fM.beginTransaction();
+                        fragmentTransaction.replace(R.id.content, new LogoutFragment());
+                        fragmentTransaction.commit();
 
-                        Intent toSignIn = new Intent(BaseActivity.this, Login.class);
-                        startActivity(toSignIn);
-                        finish();
-
+                        getSupportActionBar().setTitle("transHealth");
+                        item.setChecked(true);
+                        drawerLayout.closeDrawers();
                         break;
                 }
 
@@ -378,12 +376,6 @@ public class BaseActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
@@ -402,6 +394,7 @@ public class BaseActivity extends AppCompatActivity {
     public void doctors(View V){
         Intent i= new Intent(BaseActivity.this, DoctorsList.class);
         startActivity(i);
+
     }
 
 }

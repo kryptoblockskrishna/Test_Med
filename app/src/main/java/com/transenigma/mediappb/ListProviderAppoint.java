@@ -1,17 +1,20 @@
 package com.transenigma.mediappb;
 
+import android.widget.ImageView;
+
 /**
  * Created by Kishore on 6/24/2017.
  */
 
 public class ListProviderAppoint {
-    private String hosp, dept, city, state;
+    private String hosp, dept, name;
+    private int pic_id;
 
-    public ListProviderAppoint(String Hospital, String Department, String City, String State){
+    public ListProviderAppoint(int pic_id,String Name, String Hospital, String Department){
         this.setHosp(Hospital);
         this.setDept(Department);
-        this.setCity(City);
-        this.setState(State);
+        this.setName(Name);
+        this.setPic_id(pic_id);
     }
 
     public String getHosp() {
@@ -30,19 +33,19 @@ public class ListProviderAppoint {
         this.dept = dept;
     }
 
-    public String getCity() {
-        return city;
+    public String getName() {
+        return name;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getState() {
-        return state;
+    public int getPic_id() {
+        return pic_id;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setPic_id(int pic_id) {
+        this.pic_id = pic_id;
     }
 }
