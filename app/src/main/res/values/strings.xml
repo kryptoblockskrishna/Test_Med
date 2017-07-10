@@ -279,4 +279,6 @@
         "and due to his mature association with pure devotees he is not out of contact with the Lord for a moment."
     </string>
     <string name="action_settings">Settings</string>
+    <string name="EMAIL_TAG">EMAIL</string>
+    <string name="CONTACT_TAG">CONTACT</string>
 </resources>
