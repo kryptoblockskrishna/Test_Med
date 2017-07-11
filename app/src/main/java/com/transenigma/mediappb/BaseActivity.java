@@ -86,190 +86,23 @@ public class BaseActivity extends AppCompatActivity {
     NavigationView navigationView;
     android.app.FragmentManager fM ;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    FirebaseUser user;
-    private DatabaseReference dB_ref;
-
-    String Uid;
-    String dB_fName, dB_lName, dob ;
-    // String dob_d, dob_m, dob_y;
-    String dB_email, dB_MS, dB_Gender, dB_contact, dB_emCont, dB_emContType;
-    String dB_Add1, dB_Add2, dB_pin, dB_City, dB_State, dB_Country, dB_Unique_Id;
-
-    String UserKind;
-
     private SharedPreferences usrDetails ;
     SharedPreferences.Editor editor ;
 
-    String usr_SP;
-    private ProgressDialog downloadingUserDetails;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        toolbar = (Toolbar) findViewById(R.id.toolbarLayout);
-        setSupportActionBar(toolbar);
 
-        // ---------------------------------------Setting Shared Preference ----------------------------------------
-        final Context context = BaseActivity.this;
-        //usrDetails =  context.getSharedPreferences("USER", MODE_PRIVATE);
-        usrDetails = PreferenceManager.getDefaultSharedPreferences(context);
-        editor = usrDetails.edit();
-
-        usr_SP = usrDetails.getString("USER_ID" , "NOT_INITIALIZED");
-        UserKind = usrDetails.getString("USER_KIND", "NOT_INITIALIZED");
-
-        // ---------------------------------------------- FIREBASE -------------------------------------------------
         mAuth = FirebaseAuth.getInstance();
 
+        usrDetails = PreferenceManager.getDefaultSharedPreferences(BaseActivity.this);
+        editor = usrDetails.edit();
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                user = firebaseAuth.getCurrentUser();
-                if (user == null) {
-                    // User is not signed in
-                    Intent login = new Intent(BaseActivity.this, Login.class);
-                    startActivity(login);
-                    finish();
-                }
-                else{
-
-                    Uid = user.getUid();
-
-                    if(! usr_SP.equals(Uid)) {
-
-                        // editor.putString("USER_CHANGED", "YES");
-
-                        // ------- For Newly Logged In --------
-
-                        dB_ref = FirebaseDatabase.getInstance().getReference().child("User").child(Uid);
-
-                        dB_ref.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                // -------------------------- PULLING DATA FROM DB -------------------------------------------
-
-                                dB_email = dataSnapshot.child("Email").getValue().toString();
-                                dB_contact = dataSnapshot.child("Contact").getValue().toString();
-
-                                dB_fName = dataSnapshot.child("F_Name").getValue().toString();
-                                if( dB_fName != null ){
-                                    if(!dB_fName.isEmpty()) {
-                                        dB_lName = dataSnapshot.child("L_Name").getValue().toString();
-                                        dob = dataSnapshot.child("dOb").getValue().toString();
-                                        // dob_d = dataSnapshot.child("dOb_d").getValue().toString();
-                                        // dob_m = dataSnapshot.child("dOb_m").getValue().toString();
-                                        // dob_y = dataSnapshot.child("dOb_y").getValue().toString();
-                                        dB_MS = dataSnapshot.child("M_Stat").getValue().toString();
-                                        dB_Gender = dataSnapshot.child("Sex").getValue().toString();
-                                        dB_emCont = dataSnapshot.child("Em_Contact").getValue().toString();
-                                        dB_emContType = dataSnapshot.child("Em_Contact_type").getValue().toString();
-                                    }
-                                }
-
-                                dB_pin = dataSnapshot.child("Pin").getValue().toString();
-                                if(dB_pin != null ){
-                                    if(!dB_pin.isEmpty()) {
-                                        dB_Add1 = dataSnapshot.child("Add_line1").getValue().toString();
-                                        dB_Add2 = dataSnapshot.child("Add_line2").getValue().toString();
-                                        dB_City = dataSnapshot.child("City").getValue().toString();
-                                        dB_State = dataSnapshot.child("State").getValue().toString();
-                                        dB_Country = dataSnapshot.child("Country").getValue().toString();
-                                        dB_Unique_Id = dataSnapshot.child("UniqueID").getValue().toString();
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-                        // -------------------------- UPDATING SHARED PREFERENCE -------------------------------------------
-                        editor.putString("USER_ID", Uid);
-                        editor.putString(getString(R.string.EMAIL_TAG), dB_email);
-                        editor.putString(getString(R.string.CONTACT_TAG), dB_contact);
-
-                        if(dB_fName != null ){
-                            if(!dB_fName.isEmpty()) {
-                                editor.putString("FIRST_NAME", dB_fName);
-                                editor.putString("LAST_NAME", dB_lName);
-                                editor.putString("DOB", dob);
-                                //editor.putString("DOB_DAY", dob_d);
-                                //editor.putString("DOB_MONTH", dob_m);
-                                //editor.putString("DOB_YEAR", dob_y);
-                                editor.putString("M_STATUS", dB_MS);
-                                editor.putString("GENDER", dB_Gender);
-                                editor.putString("EM_CONTACT", dB_emCont);
-                                editor.putString("EM_CONTACT_TYPE", dB_emContType);
-                            }
-                            else{
-                                editor.putString("FIRST_NAME", "NULL");
-                                editor.putString("LAST_NAME", "NULL");
-                                editor.putString("DOB", "NULL");
-                                //editor.putString("DOB_DAY", "");
-                                //editor.putString("DOB_MONTH", "");
-                                //editor.putString("DOB_YEAR", "");
-                                editor.putString("M_STATUS", "NULL");
-                                editor.putString("GENDER", "NULL");
-                                editor.putString("EM_CONTACT", "NULL");
-                                editor.putString("EM_CONTACT_TYPE", "NULL");
-                            }
-                        }
-                        else{
-                            editor.putString("FIRST_NAME", "NULL");
-                            editor.putString("LAST_NAME", "NULL");
-                            editor.putString("DOB", "NULL");
-                            //editor.putString("DOB_DAY", "");
-                            //editor.putString("DOB_MONTH", "");
-                            //editor.putString("DOB_YEAR", "");
-                            editor.putString("M_STATUS", "NULL");
-                            editor.putString("GENDER", "NULL");
-                            editor.putString("EM_CONTACT", "NULL");
-                            editor.putString("EM_CONTACT_TYPE", "NULL");
-                        }
-
-                        if(dB_pin != null ){
-
-                            if(!dB_pin.isEmpty()) {
-                                editor.putString("ADD_LINE01", dB_Add1);
-                                editor.putString("ADD_LINE02", dB_Add2);
-                                editor.putString("PIN", dB_pin);
-                                editor.putString("CITY", dB_City);
-                                editor.putString("STATE", dB_State);
-                                editor.putString("COUNTRY", dB_Country);
-                                editor.putString("UNIQUE_ID", dB_Unique_Id);
-                            }
-                            else{
-                                editor.putString("ADD_LINE01", "NULL");
-                                editor.putString("ADD_LINE02", "NULL");
-                                editor.putString("PIN", "NULL");
-                                editor.putString("CITY", "NULL");
-                                editor.putString("STATE", "NULL");
-                                editor.putString("COUNTRY", "NULL");
-                                editor.putString("UNIQUE_ID", "NULL");
-                            }
-                        }
-                        else{
-                            editor.putString("ADD_LINE01", "NULL");
-                            editor.putString("ADD_LINE02", "NULL");
-                            editor.putString("PIN", "NULL");
-                            editor.putString("CITY", "NULL");
-                            editor.putString("STATE", "NULL");
-                            editor.putString("COUNTRY", "NULL");
-                            editor.putString("UNIQUE_ID", "NULL");
-                        }
-
-                        editor.commit();
-
-
-                    }
-                }
-            }
-        };
+        toolbar = (Toolbar) findViewById(R.id.toolbarLayout);
+        setSupportActionBar(toolbar);
 
         imageView =(ImageView)findViewById(R.id.home_image);
 
@@ -327,7 +160,6 @@ public class BaseActivity extends AppCompatActivity {
                         Intent i1 = new Intent(BaseActivity.this,MyHealth.class);
                         startActivity(i1);
 
-
                         getSupportActionBar().setTitle("transHealth");
                         item.setChecked(true);
                         drawerLayout.closeDrawers();
@@ -361,7 +193,27 @@ public class BaseActivity extends AppCompatActivity {
                     case R.id.logout :
                         mAuth.signOut();
                         //------ ?? ---------------------------------
-                        mAuth.removeAuthStateListener(mAuthListener);
+                        //mAuth.removeAuthStateListener(mAuthListener);
+
+                        editor.putString(getString(R.string.USER_KIND) , getString(R.string.DB_NOTSET));
+                        editor.putString(getResources().getString(R.string.USERID), getString(R.string.DB_NOTSET));
+                        editor.putString(getString(R.string.CONTACT_TAG) , getString(R.string.DB_NOTSET));
+                        editor.putString(getString(R.string.EMAIL_TAG) , getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.FIRST_NAME_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.LAST_NAME_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.DOB_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.M_STATUS_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.GENDER_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.EM_CONTACT_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.EM_CONTACT_TYPE_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.ADD_LINE01_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.ADD_LINE02_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.PIN_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.CITY_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.STATE_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.COUNTRY_TAG), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.UNIQUE_ID_TAG), getString(R.string.DB_NOTSET));
+                        editor.apply();
 
                         Intent toSignIn = new Intent(BaseActivity.this, Login.class);
                         startActivity(toSignIn);
@@ -377,6 +229,19 @@ public class BaseActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if( user == null) {
+            Intent login = new Intent(BaseActivity.this, Login.class);
+            startActivity(login);
+            finish();
+        }
+
     }
 
     @Override

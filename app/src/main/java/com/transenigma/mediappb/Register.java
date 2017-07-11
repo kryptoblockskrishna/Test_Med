@@ -43,6 +43,7 @@ public class Register extends AppCompatActivity {
     DatabaseReference dB_ref ;
 
     FirebaseUser curUser;
+    String UID;
 
     private ProgressDialog registerUserDB;
 
@@ -109,26 +110,26 @@ public class Register extends AppCompatActivity {
                         if(task.isSuccessful()) {
 
                             curUser = FirebaseAuth.getInstance().getCurrentUser();
-                            String UID = curUser.getUid();
+                            UID = curUser.getUid();
                             dB_ref = dB.getReference().child("User").child(UID);
 
                             HashMap<String, String> nwUsrMap = new HashMap<String, String>();
-                            nwUsrMap.put("F_Name","");
-                            nwUsrMap.put("L_Name","");
-                            nwUsrMap.put("Sex","");
-                            nwUsrMap.put("M_Stat","");
+                            nwUsrMap.put("F_Name", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("L_Name", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("Sex", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("M_Stat", getString(R.string.DB_NOTSET));
                             nwUsrMap.put("Email",emailID);
                             nwUsrMap.put("Contact", contactNo);
-                            nwUsrMap.put("Em_Contact","");
-                            nwUsrMap.put("Em_Contact_type","");
-                            nwUsrMap.put("Country","");
-                            nwUsrMap.put("State","");
-                            nwUsrMap.put("City","");
-                            nwUsrMap.put("Add_line1","");
-                            nwUsrMap.put("Add_line2","");
-                            nwUsrMap.put("Pin","");
-                            nwUsrMap.put("UniqueID","");
-                            nwUsrMap.put("dOb","");
+                            nwUsrMap.put("Em_Contact", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("Em_Contact_type", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("Country", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("State", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("City", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("Add_line1", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("Add_line2", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("Pin", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("UniqueID", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("dOb", getString(R.string.DB_NOTSET));
                             //nwUsrMap.put("dOb_d","");
                             //nwUsrMap.put("dOb_m","");
                             //nwUsrMap.put("dOb_y","");
@@ -137,12 +138,28 @@ public class Register extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        registerUserDB.dismiss();
 
-                                        editor.putString("USER_KIND", "NewUser");
-                                        editor.putString("NUMBER" , contactNo);
-                                        editor.putString("EMAIL" , emailID);
+                                        editor.putString(getString(R.string.USER_KIND) , getString(R.string.type_NewUser));
+                                        editor.putString(getResources().getString(R.string.USERID), UID);
+                                        editor.putString(getString(R.string.CONTACT_TAG) , contactNo);
+                                        editor.putString(getString(R.string.EMAIL_TAG) , emailID);
+                                        editor.putString( getString(R.string.FIRST_NAME_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.LAST_NAME_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.DOB_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.M_STATUS_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.GENDER_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.EM_CONTACT_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.EM_CONTACT_TYPE_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.ADD_LINE01_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.ADD_LINE02_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.PIN_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.CITY_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.STATE_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.COUNTRY_TAG), getString(R.string.DB_NOTSET));
+                                        editor.putString( getString(R.string.UNIQUE_ID_TAG), getString(R.string.DB_NOTSET));
                                         editor.apply();
+
+                                        registerUserDB.dismiss();
 
                                         Intent toBase = new Intent(Register.this, BaseActivity.class);
                                         startActivity(toBase);
@@ -154,7 +171,6 @@ public class Register extends AppCompatActivity {
                         else{
 
                             registerUserDB.hide();
-
                             Toast.makeText(Register.this, "Error Occured With Auth", Toast.LENGTH_SHORT).show();
                         }
                     }

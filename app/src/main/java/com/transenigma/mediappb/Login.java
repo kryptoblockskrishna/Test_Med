@@ -3,6 +3,7 @@ package com.transenigma.mediappb;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,20 +16,28 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
     EditText email;
     EditText password;
     private FirebaseAuth mAuth;
+    private FirebaseUser user;
     Button checkLogin;
 
     private ProgressDialog loginProgDB;
+
+    private SharedPreferences usrDetails ;
+    SharedPreferences.Editor editor ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        usrDetails = PreferenceManager.getDefaultSharedPreferences(Login.this);
+        editor = usrDetails.edit();
 
         email = (EditText) findViewById(R.id.login_contactInput);
         password = (EditText) findViewById(R.id.login_pass);
@@ -48,7 +57,7 @@ public class Login extends AppCompatActivity {
 
     public void checkLoginMethod(View view){
 
-        String strEmail = email.getText().toString();
+        final String strEmail = email.getText().toString();
         String strPass = password.getText().toString();
 
 
@@ -72,10 +81,17 @@ public class Login extends AppCompatActivity {
 
                             if (task.isSuccessful()) {
 
+                                user = mAuth.getCurrentUser();
+
+                                editor.putString( getResources().getString(R.string.USERID), user.getUid());
+                                editor.putString( getString(R.string.USER_KIND) , getString(R.string.type_ExistingUser));
+                                editor.putString( getString(R.string.EMAIL_TAG) , strEmail );
+                                editor.commit();
+
                                 loginProgDB.dismiss();
 
-                                Intent toBase = new Intent(Login.this, BaseActivity.class);
-                                startActivity(toBase);
+                                Intent toLoadData = new Intent(Login.this, LoadData.class);
+                                startActivity(toLoadData);
                                 finish();
                             } else {
 
