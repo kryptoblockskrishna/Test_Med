@@ -20,7 +20,7 @@ public class Doctors_Profile extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private TimePickerDialog.OnTimeSetListener timeSetListener;
     TextView name,deg,dept,hosp,avail,from;
-    ImageView pic;
+    ImageView pic,back;
     int[] img, img1,img2;
     String[] Name,Deg,Dept,Hosp,Avail,From;
     LinearLayout ll1,ll2;
@@ -30,16 +30,16 @@ public class Doctors_Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctors__profile);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.doc_pro_toolbar);
-        toolbar.setTitle("Doctor Details");
-        setSupportActionBar(toolbar);
-        //int i = getTitleColor();
-        //i=000000;
-        //toolbar.setTitleTextColor(i);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        back = (ImageView)findViewById(R.id.doc_pro_back);
         ll1 = (LinearLayout)findViewById(R.id.doc_pro_app_date_layout);
         ll2 = (LinearLayout)findViewById(R.id.doc_pro_app_time_layout);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         ll1.setOnClickListener(new View.OnClickListener() {
             @Override

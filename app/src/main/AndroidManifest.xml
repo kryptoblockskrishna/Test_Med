@@ -58,7 +58,9 @@
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".Doctors_Profile" />
-        <activity android:name=".BloodTestDetails"></activity>
+        <activity android:name=".BloodTestDetails" />
+        <activity android:name=".Dyagnostics_Profile" />
+        <activity android:name=".Health_Packages"></activity>
     </application>
 
 </manifest>

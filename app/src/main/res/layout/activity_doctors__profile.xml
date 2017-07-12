@@ -7,20 +7,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.transenigma.mediappb.Doctors_Profile">
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/doc_pro_toolbar"
+        android:layout_height="60dp"
+        app:cardElevation="7dp"
+        app:cardBackgroundColor="@color/colorPrimary">
+        <RelativeLayout
+            android:id="@+id/dt_pro_title_layout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:titleTextColor="#000000"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary">
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/doc_pro_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_back_arrow"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doctor's Profile"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                />
 
-    </android.support.design.widget.AppBarLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
