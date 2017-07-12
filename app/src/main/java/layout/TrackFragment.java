@@ -1,5 +1,6 @@
 package layout;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -12,6 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.transenigma.mediappb.BloodTestDetails;
+import com.transenigma.mediappb.Doctors_Profile;
+import com.transenigma.mediappb.Dyagnostics_Profile;
+import com.transenigma.mediappb.Health_Packages;
 import com.transenigma.mediappb.ListProviderHomeBT;
 import com.transenigma.mediappb.ListProviderHomeBnr;
 import com.transenigma.mediappb.ListProviderHomeDT;
@@ -42,15 +47,9 @@ public class TrackFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View v = inflater.inflate(R.layout.fragment_track, container, false);;
-        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_track);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         // Inflate the layout for this fragment
 
 
@@ -77,6 +76,17 @@ public class TrackFragment extends Fragment {
         }
         adapterSrvs = new RecyclerAdapterHomeServices(arrayListSrvs);
         recyclerVwSrvs.setAdapter(adapterSrvs);
+        recyclerVwSrvs.addOnItemTouchListener(
+                new RecyclerItemClickListener(v.getContext(), new RecyclerItemClickListener.OnItemClickListener(){
+                    @Override
+                    public void OnItemClick(View v, int position) {
+                        Intent i = new Intent(v.getContext(), Health_Packages.class);
+                        i.putExtra("Calling_From",0);
+                        i.putExtra("Position",position);
+                        startActivity(i);
+                    }
+                })
+        );
 
 
         // Recycler View for Blood test
@@ -103,6 +113,18 @@ public class TrackFragment extends Fragment {
         adapterHmBt = new RecyclerAdapterHomeBT(arrayListHmBT);
         recyclerVwHmBT.setAdapter(adapterHmBt);
 
+        recyclerVwHmBT.addOnItemTouchListener(
+                new RecyclerItemClickListener(v.getContext(), new RecyclerItemClickListener.OnItemClickListener(){
+                    @Override
+                    public void OnItemClick(View v, int position) {
+                        Intent i = new Intent(v.getContext(), BloodTestDetails.class);
+                        i.putExtra("Calling_From",0);
+                        i.putExtra("Position",position);
+                        startActivity(i);
+                    }
+                })
+        );
+
         // Recycler View for Dyagnostics Test
 
         recyclerVwHmDT = (RecyclerView)v.findViewById(R.id.home_dt_rcyclrView);
@@ -127,6 +149,19 @@ public class TrackFragment extends Fragment {
         }
         adapterHmDT = new RecyclerAdapterHomeDT(arrayListHmDT);
         recyclerVwHmDT.setAdapter(adapterHmDT);
+
+        recyclerVwHmDT.addOnItemTouchListener(
+                new RecyclerItemClickListener(v.getContext(), new RecyclerItemClickListener.OnItemClickListener(){
+                    @Override
+                    public void OnItemClick(View v, int position) {
+                        Intent i = new Intent(v.getContext(), Dyagnostics_Profile.class);
+                        i.putExtra("Calling_From",0);
+                        i.putExtra("Position",position);
+                        startActivity(i);
+                    }
+                })
+        );
+
         return v;
 
     }
