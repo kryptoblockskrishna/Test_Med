@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/AppTheme.AppBarOverlay">
+
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,9 +70,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/colorBottomNavView"
-            android:elevation="8dp"
             app:itemTextColor="#626161"
-            app:menu="@menu/navigation" />
+            app:menu="@menu/navigation"
+            android:elevation="8dp"/>
 
     </LinearLayout>
 
@@ -87,6 +88,6 @@
         app:itemTextColor="#ffffff"
         app:itemIconTint="#ffffff"
         >
-
     </android.support.design.widget.NavigationView>
+
 </android.support.v4.widget.DrawerLayout>

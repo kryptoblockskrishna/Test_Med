@@ -83,6 +83,7 @@
     </string-array>
 
 
+
     <string-array name="locale">
         <item>Select</item>
         <item>Howrah</item>
@@ -323,4 +324,6 @@
     <string name="action_settings">Settings</string>
     <string name="desc_sample">A blood test is a laboratory analysis performed on a blood sample that is usually extracted from a vein in the arm using a needle, or via fingerprick.</string>
     <string name="desc_sample1">A computed tomography (CT) scan uses X-rays to make detailed pictures of parts of your body and the structures inside your body. During the test, you will lie on a table that is attached to the CT scanner.</string>
+    <string name="EMAIL_TAG">EMAIL</string>
+    <string name="CONTACT_TAG">CONTACT</string>
 </resources>
