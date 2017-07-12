@@ -14,10 +14,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import layout.AppointmentFragment;
 import layout.LogoutFragment;
@@ -32,7 +36,6 @@ public class BaseActivity extends AppCompatActivity {
     int[] img_home ={R.drawable.welcome,R.drawable.book_appointment,R.drawable.services};
     int img= img_home[0];
     int j=0;
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -74,12 +77,35 @@ public class BaseActivity extends AppCompatActivity {
     NavigationView navigationView;
     android.app.FragmentManager fM ;
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         toolbar = (Toolbar) findViewById(R.id.toolbarLayout);
         setSupportActionBar(toolbar);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+
+
+                }
+                else {
+                    // User is signed out
+                    Intent login = new Intent(BaseActivity.this, Login.class);
+                    startActivity(login);
+                    finish();
+                }
+            }
+        };
 
         imageView =(ImageView)findViewById(R.id.home_image);
         Runnable r = new Runnable(){
@@ -96,7 +122,7 @@ public class BaseActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open,
+        actionBarDrawerToggle = new ActionBarDrawerToggle(BaseActivity.this, drawerLayout, toolbar, R.string.drawer_open,
                 R.string.drawer_close);
 
         //Depricated drawerLayout.setDrawerListener();
@@ -117,7 +143,7 @@ public class BaseActivity extends AppCompatActivity {
         Menu menu= navigationView.getMenu();
         MenuItem account = menu.findItem(R.id.navdraw_menu);
         SpannableString s = new SpannableString(account.getTitle());
-        s.setSpan(new TextAppearanceSpan(this,R.style.NavDraw_Menu_Title),0,s.length(),0);
+        s.setSpan(new TextAppearanceSpan(BaseActivity.this,R.style.NavDraw_Menu_Title),0,s.length(),0);
         account.setTitle(s);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -168,13 +194,12 @@ public class BaseActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         break;
                     case R.id.logout :
-                        fragmentTransaction = fM.beginTransaction();
-                        fragmentTransaction.replace(R.id.content, new LogoutFragment());
-                        fragmentTransaction.commit();
+                        mAuth.removeAuthStateListener(mAuthListener);
 
-                        getSupportActionBar().setTitle("transHealth");
-                        item.setChecked(true);
-                        drawerLayout.closeDrawers();
+                        Intent toSignIn = new Intent(BaseActivity.this, Login.class);
+                        startActivity(toSignIn);
+                        finish();
+
                         break;
                 }
 
@@ -185,6 +210,12 @@ public class BaseActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override

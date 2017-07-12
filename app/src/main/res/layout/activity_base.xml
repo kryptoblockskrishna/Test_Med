@@ -69,9 +69,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="@color/colorBottomNavView"
+            android:elevation="8dp"
             app:itemTextColor="#626161"
-            app:menu="@menu/navigation"
-            android:elevation="8dp"/>
+            app:menu="@menu/navigation" />
 
     </LinearLayout>
 
