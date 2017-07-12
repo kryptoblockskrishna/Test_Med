@@ -23,131 +23,276 @@
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/doc_pro_title"
-            android:text="Doctors Details"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:textColor="#454e6d"
-            android:textSize="16sp"
-            android:gravity=""/>
+        android:layout_height="match_parent"
+        android:background="#ded3d3">
 
-        <LinearLayout
-            android:layout_below="@id/doc_pro_title"
-            android:layout_width="105dp"
-            android:layout_height="105dp"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="#432f2f"
-            android:id="@+id/doc_pro_iv1">
-            <ImageView
-                android:id="@+id/doc_pro_pic"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/ic_profile2"/>
-        </LinearLayout>
-        <TextView
-            android:layout_below="@id/doc_pro_title"
-            android:layout_toRightOf="@+id/doc_pro_iv1"
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dr. Gopal"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:textSize="16sp"
-            android:textColor="#000"
-            android:id="@+id/doc_pro_name"
-            />
-        <TextView
-            android:layout_toRightOf="@+id/doc_pro_iv1"
-            android:layout_below="@id/doc_pro_name"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/doc_pro_deg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="has done MBBS, FRCS-London,"
-            />
-        <TextView
-            android:id="@+id/doc_pro_dept"
-            android:layout_toRightOf="@id/doc_pro_iv1"
-            android:layout_below="@id/doc_pro_deg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="is a Heart Specialist,"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:layout_toRightOf="@id/doc_pro_iv1"
-            android:layout_below="@id/doc_pro_dept"
-            android:id="@+id/doc_pro_hosp"
+            android:gravity="center_vertical"
+            android:background="@color/colorPrimary"
+            android:id="@+id/doc_pro_iv1"
+            android:paddingBottom="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:id="@+id/doc_pro_pic_layout"
+                android:layout_centerVertical="true">
+                <ImageView
+                    android:id="@+id/doc_pro_pic"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_profile2"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_toRightOf="@+id/doc_pro_pic_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dr. Gopal"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:id="@+id/doc_pro_name"
+                />
+            <TextView
+                android:layout_toRightOf="@+id/doc_pro_pic_layout"
+                android:layout_below="@id/doc_pro_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:id="@+id/doc_pro_deg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MBBS, FRCS-London"
+                android:textColor="#ffffff"
+
+                />
+            <TextView
+                android:layout_toRightOf="@+id/doc_pro_pic_layout"
+                android:id="@+id/doc_pro_dept"
+                android:layout_below="@id/doc_pro_deg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heart Specialist"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffffff"
+                />
+            <TextView
+                android:layout_below="@id/doc_pro_dept"
+                android:id="@+id/doc_pro_hosp"
+                android:layout_toRightOf="@+id/doc_pro_pic_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Balaji Nursing Home."
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffffff"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_below="@id/doc_pro_iv1"
+            android:id="@+id/doc_pro_fav_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="at Balaji Nursing Home."
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            />
+            android:layout_marginBottom="2dp">
+            <TextView
+                android:paddingLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to Favourites"
+                android:layout_centerVertical="true"/>
+            <android.support.v7.widget.SwitchCompat
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                />
+        </RelativeLayout>
         <TextView
-            android:id="@+id/doc_pro_avail1"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/doc_pro_iv1"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center"
-            android:text="Available Every"/>
-        <TextView
-            android:id="@+id/doc_pro_avail2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/doc_pro_iv1"
-            android:layout_toRightOf="@id/doc_pro_avail1"
-            android:text=": Mon, Tue &amp; Wed"
-            android:layout_marginTop="20dp"
-            android:textColor="#398c2e"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/doc_pro_avail1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:text="    From    :"
-            android:id="@+id/doc_pro_from"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/doc_pro_time"
-            android:layout_below="@id/doc_pro_avail1"
-            android:layout_toRightOf="@id/doc_pro_from"
-            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="7dp"
+            android:layout_below="@id/doc_pro_fav_layout"
+            android:layout_height="2dp"
+            android:background="#000"
             android:layout_marginLeft="5dp"
-            android:text="4.30-5.30 PM"
-            android:textColor="#398c2e"
+            android:layout_marginRight="5dp"
             />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/doc_pro_speciality_layout"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/doc_pro_fav_layout">
+            <TextView
+                android:id="@+id/doc_pro_speciality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="7dp"
+                android:gravity="center"
+                android:text="Speciality Clinic"
+                android:textColor="#021142"/>
+            <TextView
+                android:id="@+id/doc_pro_speciality_avail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/doc_pro_speciality"
+                android:text="Mon, wed  "
+                android:textColor="#398c2e"/>
+            <TextView
+                android:id="@+id/doc_pro_speciality_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/doc_pro_speciality_avail"
+                android:text="4.30Pm-9PM"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/doc_pro_speciality_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_below="@id/doc_pro_speciality"
+                android:layout_toRightOf="@id/doc_pro_speciality_avail"
+                android:text="₹500"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/doc_pro_speciality_time"
+                android:background="#000"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/doc_pro_general_layout"
+            android:layout_below="@id/doc_pro_speciality_layout"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="7dp"
+                android:text="General"
+                android:textColor="#021142"
+                android:id="@+id/doc_pro_general"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/doc_pro_general_avail"
+                android:layout_below="@id/doc_pro_general"
+                android:layout_marginLeft="25dp"
+                android:text="Tue"
+                android:textColor="#398c2e"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/doc_pro_general_time"
+                android:layout_below="@id/doc_pro_general_avail"
+                android:layout_marginLeft="25dp"
+                android:text="4.20Pm-8Pm"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/doc_pro_general_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_below="@id/doc_pro_general"
+                android:layout_toRightOf="@id/doc_pro_general_time"
+                android:text="₹200"/>
+
+        </RelativeLayout>
         <TextView
             android:id="@+id/doc_pro_margin1"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_below="@id/doc_pro_time"
+            android:layout_below="@id/doc_pro_general_layout"
             android:background="#000000"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"/>
         <TextView
+            android:id="@+id/doc_pro_app_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/doc_pro_margin1"
             android:text="Book an Appointment"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:textColor="#454e6d"
+            android:textColor="#021142"
             android:textSize="15sp"/>
+        <LinearLayout
+            android:id="@+id/doc_pro_app_date_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doc_pro_app_title"
+            android:layout_marginTop="7dp">
+            <ImageView
+                android:id="@+id/doc_pro_app_cal_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_calendar"
+                android:layout_marginLeft="20dp"/>
+            <TextView
+                android:id="@+id/doc_pro_app_cal_tv"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose a Date"
+                android:textColor="#2e3650"
+                />
 
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/doc_pro_app_time_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:layout_below="@id/doc_pro_app_date_layout"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_clock"/>
+            <TextView
+                android:id="@+id/doc_pro_app_time_tv"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pick a Time slot"
+                android:textColor="#2e3650"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Book Appointment"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:background="@color/colorPrimary"/>
     </RelativeLayout>
 </LinearLayout>

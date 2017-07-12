@@ -1,18 +1,29 @@
 package com.transenigma.mediappb;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 public class Doctors_Profile extends AppCompatActivity {
 
+    private DatePickerDialog.OnDateSetListener dateSetListener;
+    private TimePickerDialog.OnTimeSetListener timeSetListener;
     TextView name,deg,dept,hosp,avail,from;
     ImageView pic;
     int[] img, img1,img2;
     String[] Name,Deg,Dept,Hosp,Avail,From;
+    LinearLayout ll1,ll2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +38,47 @@ public class Doctors_Profile extends AppCompatActivity {
         //toolbar.setTitleTextColor(i);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        ll1 = (LinearLayout)findViewById(R.id.doc_pro_app_date_layout);
+        ll2 = (LinearLayout)findViewById(R.id.doc_pro_app_time_layout);
+
+        ll1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog d= new DatePickerDialog(v.getContext() ,dateSetListener,year,month,day);
+                dateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                    }
+                };
+                d.show();
+            }
+        });
+
+        ll2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int min = c.get(Calendar.MINUTE);
+
+                TimePickerDialog t = new TimePickerDialog(v.getContext(), timeSetListener,hour,min,false);
+                timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                    }
+                };
+                t.show();
+            }
+
+        });
+
         Intent i = getIntent();
         int loc = i.getIntExtra("Calling_From", 0);
         int pos = i.getIntExtra("Position", 0);
@@ -37,8 +89,8 @@ public class Doctors_Profile extends AppCompatActivity {
         deg =(TextView)findViewById(R.id.doc_pro_deg);
         dept =(TextView)findViewById(R.id.doc_pro_dept);
         hosp =(TextView)findViewById(R.id.doc_pro_hosp);
-        avail =(TextView)findViewById(R.id.doc_pro_avail2);
-        from =(TextView)findViewById(R.id.doc_pro_time);
+        avail =(TextView)findViewById(R.id.doc_pro_speciality_avail);
+        from =(TextView)findViewById(R.id.doc_pro_speciality_time);
         pic = (ImageView)findViewById(R.id.doc_pro_pic);
         if(loc==0){
             Name= getResources().getStringArray(R.array.rcy_pin_doc_name);
@@ -60,10 +112,10 @@ public class Doctors_Profile extends AppCompatActivity {
         }
 
         name.setText("Dr. " + Name[pos]);
-        deg.setText("has done " + Deg[pos]);
-        dept.setText("is a " +  Dept[pos]);
-        hosp.setText("at " + Hosp[pos]);
-        avail.setText(": "+Avail[pos]);
+        deg.setText(Deg[pos]);
+        dept.setText(Dept[pos]);
+        hosp.setText(Hosp[pos]);
+        avail.setText(Avail[pos]);
         from.setText(From[pos]);
         pic.setImageResource(img[pos]);
 

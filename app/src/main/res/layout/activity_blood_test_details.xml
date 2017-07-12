@@ -1,112 +1,112 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
-    tools:context="layout.AppointmentFragment"
-    android:background="#b9b2b2"
-    >
-    <ScrollView
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBottomNavView"
+    tools:context="com.transenigma.mediappb.BloodTestDetails">
+    <RelativeLayout
+        android:id="@+id/bt_pro_title_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:background="#b9b2b2"
-        android:id="@+id/search_doc_sv1"
-        >
+        android:layout_height="100dp"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:id="@+id/bt_pro_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_back_arrow"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BLOOD TEST"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/bt_pro_button"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="Book a test"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        />
+
+    <ScrollView
+        android:layout_below="@id/bt_pro_title_layout"
+        android:layout_above="@id/bt_pro_button"
+        android:id="@+id/bt_pro_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="#b9b2b2">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <LinearLayout
+                android:id="@+id/bt_pro_desc_layout"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#716060"/>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#ded3d3"
-                    android:elevation="5dp"
-                    >
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="70dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ic_starfilled"
-                        android:id="@+id/pinned_doc_iv"/>
-
-                    <TextView
-                        android:id="@+id/pinned_doc_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:text="Preferred Doctors"
-                        android:textColor="#021142"
-                        android:textSize="14sp"
-                        android:paddingLeft="70dp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="10dp"
-                        android:clickable="true" />
-                    <TextView
-                        android:layout_toRightOf="@id/pinned_doc_iv"
-                        android:textSize="12sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="(Click to Book Appointment)"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginLeft="10dp"/>
-                    <ImageView
-                        android:id="@+id/pin_doc_arrow"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/ic_circle_arrow"
-                        android:scaleType="centerInside"/>
-                </RelativeLayout>
-
-                <android.support.v7.widget.CardView
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/pinned_doctors_card"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="64dp"
-                    android:layout_marginLeft="10dp"
+                    android:text="Description"
+                    android:textSize="16sp"
+                    android:textColor="@color/subTitleTextColor"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="12dp"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    card_view:cardCornerRadius="4dp"
-                    android:elevation="3dp"
-                    app:cardBackgroundColor="#ded3d3">
+                    android:text="@string/desc_sample"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="Pre-requisites"
+                    android:textSize="16sp"
+                    android:textColor="@color/subTitleTextColor"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Empty Stomach"
+                    android:layout_marginTop="7dp"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:orientation="vertical"
-                        android:clickable="true">
+            </LinearLayout>
 
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/appoint_recycler"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="10dp"
-                            android:clickable="true"
-                            app:layoutManager="android.support.v7.widget.LinearLayoutManager">
-
-                        </android.support.v7.widget.RecyclerView>
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#000"
+                android:layout_marginTop="15dp"
+                />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="5dp"
-                    android:background="#ded3d3">
+                    android:background="@color/colorBottomNavView">
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="70dp"
@@ -123,25 +123,25 @@
                         android:paddingBottom="5dp"
                         android:scaleType="centerInside"
                         android:src="@drawable/ic_search"
-                        android:id="@+id/search_doc_iv"
-                        />
+                        android:id="@+id/bt_pro_filter_iv" />
                     <TextView
-                        android:id="@+id/search_doc_text"
+                        android:id="@+id/bt_pro_filter_title"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:paddingLeft="70dp"
                         android:paddingTop="15dp"
                         android:clickable="true"
-                        android:text="Search a Doctor"
+                        android:elevation="5dp"
+                        android:text="Choose a Hospital"
                         android:textColor="#021142"
                         android:textSize="14sp" />
                     <TextView
-                        android:layout_toRightOf="@id/search_doc_iv"
+                        android:layout_toRightOf="@id/bt_pro_filter_iv"
                         android:textSize="12sp"
                         android:layout_marginTop="40dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="(Click to search for Doctors)"
+                        android:text="(Click to choose a hospital)"
                         android:paddingBottom="5dp"
                         android:paddingLeft="10dp"
                         android:id="@+id/textView2" />
@@ -149,19 +149,19 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:id="@+id/search_doc_arrow"
+                        android:id="@+id/bt_pro_filter_arrow"
                         android:src="@drawable/ic_circle_arrow"
                         android:scaleType="centerInside"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="15dp"
                         android:layout_marginRight="15dp"/>
-
                 </RelativeLayout>
+
 
 
                 <android.support.v7.widget.CardView
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/search_doc_card"
+                    android:id="@+id/bt_pro_filter_card"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     card_view:cardCornerRadius="4dp"
                     android:elevation="3dp"
-                    app:cardBackgroundColor="#ded3d3">
+                    app:cardBackgroundColor="#ebe7e7">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -184,20 +184,20 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_top"
                             android:orientation="horizontal"
-                            android:id="@+id/linlayout1">
+                            android:id="@+id/bt_pro_linlay1">
 
 
 
 
                             <LinearLayout
-                                android:id="@+id/appoint_city_layout"
+                                android:id="@+id/bt_pro_filter_city_lay"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_weight="1">
 
                                 <Spinner
-                                    android:id="@+id/appoint_spinner_city"
+                                    android:id="@+id/bt_pro_filter_spinner_city"
                                     android:layout_width="match_parent"
                                     android:layout_height="30dp"
                                     android:layout_marginTop="2dp"
@@ -208,7 +208,6 @@
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:id="@+id/textView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="6dp"
@@ -217,7 +216,7 @@
                                     android:textSize="12sp" />
                             </LinearLayout>
                             <RelativeLayout
-                                android:id="@+id/appoint_locale_layout"
+                                android:id="@+id/bt_pro_filter_locale_layout"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
@@ -225,7 +224,7 @@
                                 android:orientation="vertical">
 
                                 <Spinner
-                                    android:id="@+id/appoint_locale"
+                                    android:id="@+id/bt_pro_filter_locale"
                                     android:layout_width="match_parent"
                                     android:layout_height="30dp"
                                     android:layout_marginTop="2dp"
@@ -248,12 +247,12 @@
 
                         </LinearLayout>
                         <RelativeLayout
-                            android:id="@+id/appoint_hosp_layout"
+                            android:id="@+id/bt_pro_filter_hosp_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/linlayout1">
+                            android:layout_below="@+id/bt_pro_linlay1">
                             <TextView
-                                android:id="@+id/app_tv_hospital"
+                                android:id="@+id/bt_pro_filter_tv_hospital"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Hospital"
@@ -263,9 +262,9 @@
                                 android:elevation="1dp"/>
 
                             <Spinner
-                                android:id="@+id/select_hospital"
+                                android:id="@+id/bt_pro_filter_select_hospital"
                                 android:layout_width="match_parent"
-                                android:layout_below="@id/app_tv_hospital"
+                                android:layout_below="@id/bt_pro_filter_tv_hospital"
                                 android:entries="@array/hospital"
                                 android:contentDescription="@string/app_name"
                                 android:layout_height="40dp"
@@ -276,39 +275,18 @@
                                 android:background="#ccc3c3"
                                 android:pointerIcon="arrow"/>
 
-                            <TextView
-                                android:id="@+id/app_tv_department"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/select_hospital"
-                                android:text="Department"
-                                android:textSize="14dp"
-                                android:textColor="#757575"
-                                android:layout_marginBottom="1dp"
-                                android:layout_marginTop="6dp"/>
 
-                            <Spinner
-                                android:id="@+id/select_department"
-                                android:layout_width="match_parent"
-                                android:entries="@array/department"
-                                android:layout_below="@id/app_tv_department"
-                                android:layout_height="40dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginBottom="20dp"
-                                android:elevation="2dp"
-                                android:background="#ccc3c3" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
-                                android:text="GET LIST"
+                                android:text="Set Hospital"
                                 android:textStyle="bold"
                                 android:textSize="15sp"
                                 android:gravity="center"
-                                android:layout_below="@id/select_department"
+                                android:layout_below="@id/bt_pro_filter_select_hospital"
                                 android:layout_centerInParent="true"
+                                android:layout_marginTop="5dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginBottom="20dp"
                                 android:textColor="@color/colorPrimary"
@@ -320,6 +298,47 @@
 
                 </android.support.v7.widget.CardView>
             </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000"
+                android:layout_marginBottom="10dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Book your test"
+                android:textSize="16sp"
+                android:textColor="@color/subTitleTextColor" />
+            <LinearLayout
+                android:id="@+id/bt_pro_app_date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
+                <ImageView
+                    android:id="@+id/doc_pro_app_cal_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_calendar"
+                    android:layout_marginLeft="20dp"/>
+                <TextView
+                    android:id="@+id/doc_pro_app_cal_tv"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choose a Date"
+                    android:textColor="#2e3650"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
+                android:text="Your approximate test time is 9.30AM"/>
 
         </LinearLayout>
     </ScrollView>

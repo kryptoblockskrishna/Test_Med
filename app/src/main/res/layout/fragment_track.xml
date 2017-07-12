@@ -11,80 +11,58 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBottomNavView">
+            android:background="#c7baba">
 
-            <LinearLayout
+           <android.support.v7.widget.CardView
+               android:id="@+id/srvs_card1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               app:cardElevation="5dp"
+               app:cardCornerRadius="3dp"
+               app:cardBackgroundColor="@color/colorBottomNavView"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="5dp"
+               android:layout_marginLeft="7dp"
+               android:layout_marginRight="7dp">
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:orientation="vertical"
+                   android:id="@+id/home_bt_card">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Blood Tests"
+                       android:textSize="16sp"
+                       android:textStyle="bold"
+                       android:layout_marginTop="7dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginLeft="10dp"
+                       android:id="@+id/home_bt_textview"
+                       />
+                   <android.support.v7.widget.RecyclerView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/home_bt_rcyclrView"
+                       android:layout_marginLeft="10dp"
+                       android:layout_marginBottom="10dp"
+                       android:elevation="2dp"
+                       />
+               </LinearLayout>
+           </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_below="@id/srvs_card1"
+                android:id="@+id/srvs_card2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/home_my_cntntcrd"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_below="@+id/home_srvs_rcyclrView"
-                    android:layout_marginLeft="10dp"
-                    android:background="#7b7b7b"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:orientation="horizontal"
-                    android:id="@+id/home_my_cntnt"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="#7b7b7b"/>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/home_my_cntntcrd"
-                android:id="@+id/home_bt_card">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#7b7b7b"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Blood Tests"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/home_bt_textview"
-                    />
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/home_bt_rcyclrView"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:elevation="2dp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="#7b7b7b"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/home_bt_card"
-                android:id="@+id/home_dt_card">
+                app:cardElevation="5dp"
+                app:cardCornerRadius="3dp"
+                app:cardBackgroundColor="@color/colorBottomNavView"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp">
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -108,26 +86,22 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="10dp"
                         android:elevation="2dp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_below="@id/home_dt_rcyclrView"
-                        android:layout_marginLeft="10dp"
-                        android:background="#7b7b7b"/>
 
                 </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-            </LinearLayout>
-
-
-            <LinearLayout
+            <android.support.v7.widget.CardView
+                android:layout_below="@id/srvs_card2"
+                android:id="@+id/srvs_card3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/home_dt_card"
-                android:id="@+id/home_srv_card"
-                >
+                app:cardElevation="5dp"
+                app:cardCornerRadius="3dp"
+                app:cardBackgroundColor="@color/colorBottomNavView"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp">
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -159,18 +133,13 @@
                         android:background="#7b7b7b"/>
 
                 </RelativeLayout>
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+
         </RelativeLayout>
     </ScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_track"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
-
 
 
 </FrameLayout>
