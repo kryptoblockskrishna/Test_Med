@@ -60,9 +60,6 @@
         </activity>
         <activity android:name=".Login" />
         <activity android:name=".Register" />
-        <activity android:name=".BloodTestDetails" />
-        <activity android:name=".Dyagnostics_Profile" />
-        <activity android:name=".Health_Packages"></activity>
         <activity android:name=".Doctors_Profile" />
         <activity android:name=".LoadData"></activity>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
