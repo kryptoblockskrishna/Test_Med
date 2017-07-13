@@ -118,9 +118,12 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         mAuth = FirebaseAuth.getInstance();
-        String UserId = mAuth.getCurrentUser().getUid();
-        dB_user = FirebaseDatabase.getInstance().getReference().child("User").child(UserId);
-        userProfilePic = FirebaseStorage.getInstance().getReference();
+        String UserId;
+        if(mAuth.getCurrentUser() != null){
+            UserId = mAuth.getCurrentUser().getUid();
+            dB_user = FirebaseDatabase.getInstance().getReference().child("User").child(UserId);
+            userProfilePic = FirebaseStorage.getInstance().getReference();
+        }
 
         usrDetails = PreferenceManager.getDefaultSharedPreferences(BaseActivity.this);
         editor = usrDetails.edit();
@@ -325,9 +328,14 @@ public class BaseActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             curUser = FirebaseAuth.getInstance().getCurrentUser();
             // String Uid = usrDetails.getString(getString(R.string.USERID),"not_Known");
-            String Uid = curUser.getUid();
+            String Uid;
+            if(curUser != null) {
+                Uid = curUser.getUid();
+            }else{
+                Uid = "NULL";
+            }
 
-            if (resultCode == RESULT_OK) {
+            if (!Uid.equals("NULL") && resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
 
                 ImageUploadProgressDiaglog = new ProgressDialog(BaseActivity.this);
@@ -372,8 +380,9 @@ public class BaseActivity extends AppCompatActivity {
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
                 String strError = error.getMessage();
-
-                Toast.makeText(BaseActivity.this, strError ,Toast.LENGTH_SHORT).show();
+                if(!Uid.equals("NULL")) {
+                    Toast.makeText(BaseActivity.this, strError, Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
