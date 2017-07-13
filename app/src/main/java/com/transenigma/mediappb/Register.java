@@ -128,6 +128,7 @@ public class Register extends AppCompatActivity {
                             nwUsrMap.put("Add_line1", getString(R.string.DB_NOTSET));
                             nwUsrMap.put("Add_line2", getString(R.string.DB_NOTSET));
                             nwUsrMap.put("Pin", getString(R.string.DB_NOTSET));
+                            nwUsrMap.put("ProfilePic", getString(R.string.DB_NOTSET));
                             nwUsrMap.put("UniqueID", getString(R.string.DB_NOTSET));
                             nwUsrMap.put("dOb", getString(R.string.DB_NOTSET));
                             //nwUsrMap.put("dOb_d","");

@@ -299,7 +299,7 @@ public class MyProTab1 extends Fragment {
         email_et.setText(email);
         contact_et.setText(contact);
 
-        if( emContact_et != null && !emContact_et.equals(getResources().getString(R.string.DB_NOTSET)) ){
+        if( em_contact != null && !em_contact.equals(getResources().getString(R.string.DB_NOTSET)) ){
 
             fName_et.setText(fName);
             lName_et.setText(lName);
@@ -493,13 +493,13 @@ public class MyProTab1 extends Fragment {
             UsrMap.put("Sex", pos_g);
             UsrMap.put("Em_Contact_type",pos_emC);
             UsrMap.put("dOb",dateEdit.getText().toString());
-
             UsrMap.put("Country", usrDetails.getString("COUNTRY",""));
             UsrMap.put("State", usrDetails.getString("STATE",""));
             UsrMap.put("City", usrDetails.getString("CITY",""));
             UsrMap.put("Add_line1", usrDetails.getString("ADD_LINE01",""));
             UsrMap.put("Add_line2", usrDetails.getString("ADD_LINE02",""));
             UsrMap.put("Pin", usrDetails.getString("PIN",""));
+            UsrMap.put("ProfilePic", usrDetails.getString("PROFILE_PIC",""));
             UsrMap.put("UniqueID", usrDetails.getString("UNIQUE_ID",""));
 
             // UsrMap.put("dOb_d","");
@@ -600,6 +600,8 @@ public class MyProTab1 extends Fragment {
             UsrMap.put("Add_line1", Add1_et.getText().toString());
             UsrMap.put("Add_line2", Add2_et.getText().toString());
             UsrMap.put("Pin", pin_et.getText().toString());
+            UsrMap.put("ProfilePic", usrDetails.getString("PROFILE_PIC",""));
+
             UsrMap.put("UniqueID",uniqueID_et.getText().toString());
 
             dB_ref.setValue(UsrMap).addOnCompleteListener(new OnCompleteListener<Void>() {

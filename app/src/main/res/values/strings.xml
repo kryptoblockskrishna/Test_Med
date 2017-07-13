@@ -342,6 +342,7 @@
     <string name="ADD_LINE01_TAG">ADD_LINE01</string>
     <string name="ADD_LINE02_TAG">ADD_LINE02</string>
     <string name="PIN_TAG">PIN</string>
+    <string name="PROFILE_PIC_TAG">PROFILE_PIC</string>
     <string name="CITY_TAG">CITY</string>
     <string name="STATE_TAG">STATE</string>
     <string name="COUNTRY_TAG">COUNTRY</string>

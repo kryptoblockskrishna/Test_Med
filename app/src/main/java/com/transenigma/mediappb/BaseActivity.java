@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -23,8 +24,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +37,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import layout.AppointmentFragment;
 import layout.RecentFragment;
 import layout.ServicesFragment;
@@ -86,10 +97,20 @@ public class BaseActivity extends AppCompatActivity {
     NavigationView navigationView;
     android.app.FragmentManager fM ;
 
+    TextView navHeaderName;
+    TextView navHeaderEmail;
+    CircleImageView profilePic;
+    private final int GALLERY_PIC = 1;
+
     private SharedPreferences usrDetails ;
     SharedPreferences.Editor editor ;
 
     private FirebaseAuth mAuth;
+    private FirebaseUser curUser;
+    private StorageReference userProfilePic;
+    private DatabaseReference dB_user;
+
+    ProgressDialog ImageUploadProgressDiaglog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +118,9 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         mAuth = FirebaseAuth.getInstance();
+        String UserId = mAuth.getCurrentUser().getUid();
+        dB_user = FirebaseDatabase.getInstance().getReference().child("User").child(UserId);
+        userProfilePic = FirebaseStorage.getInstance().getReference();
 
         usrDetails = PreferenceManager.getDefaultSharedPreferences(BaseActivity.this);
         editor = usrDetails.edit();
@@ -140,6 +164,46 @@ public class BaseActivity extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         Menu menu= navigationView.getMenu();
         MenuItem account = menu.findItem(R.id.navdraw_menu);
+        View headerView = navigationView.getHeaderView(0);
+
+        navHeaderName = (TextView) headerView.findViewById(R.id.navHeader_name);
+        navHeaderEmail = (TextView) headerView.findViewById(R.id.navHeader_email);
+        profilePic = (CircleImageView) headerView.findViewById(R.id.navHeader_img);
+
+        String fName, lName, email, Ppic;
+        fName = usrDetails.getString(getString(R.string.FIRST_NAME_TAG), "");
+        lName = usrDetails.getString(getString(R.string.LAST_NAME_TAG), "");
+        email = usrDetails.getString(getString(R.string.EMAIL_TAG), "");
+        Ppic = usrDetails.getString(getString(R.string.PROFILE_PIC_TAG),getString(R.string.DB_NOTSET));
+
+        if( fName.equals(getString(R.string.DB_NOTSET)) ){
+            navHeaderName.setText("Update MyProfile");
+        }
+        else{
+            navHeaderName.setText(fName + " " + lName);
+        }
+
+        if( email.equals(getString(R.string.DB_NOTSET))){
+            navHeaderEmail.setText( " " );
+        }else{
+            navHeaderEmail.setText(email);
+        }
+
+        if( ! Ppic.equals(getString(R.string.DB_NOTSET))){
+            Picasso.with(BaseActivity.this).load(Ppic).into(profilePic);
+        }
+
+        profilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent GalleryIntent = new Intent();
+                GalleryIntent.setType("image/*");
+                GalleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(GalleryIntent,"SELECT IMAGE"), GALLERY_PIC);
+            }
+        });
+
+
         SpannableString s = new SpannableString(account.getTitle());
         s.setSpan(new TextAppearanceSpan(this,R.style.NavDraw_Menu_Title),0,s.length(),0);
         account.setTitle(s);
@@ -195,10 +259,10 @@ public class BaseActivity extends AppCompatActivity {
                         //------ ?? ---------------------------------
                         //mAuth.removeAuthStateListener(mAuthListener);
 
-                        editor.putString(getString(R.string.USER_KIND) , getString(R.string.DB_NOTSET));
-                        editor.putString(getResources().getString(R.string.USERID), getString(R.string.DB_NOTSET));
-                        editor.putString(getString(R.string.CONTACT_TAG) , getString(R.string.DB_NOTSET));
-                        editor.putString(getString(R.string.EMAIL_TAG) , getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.USER_KIND) , getString(R.string.DB_NOTSET));
+                        editor.putString( getResources().getString(R.string.USERID), getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.CONTACT_TAG) , getString(R.string.DB_NOTSET));
+                        editor.putString( getString(R.string.EMAIL_TAG) , getString(R.string.DB_NOTSET));
                         editor.putString( getString(R.string.FIRST_NAME_TAG), getString(R.string.DB_NOTSET));
                         editor.putString( getString(R.string.LAST_NAME_TAG), getString(R.string.DB_NOTSET));
                         editor.putString( getString(R.string.DOB_TAG), getString(R.string.DB_NOTSET));
@@ -245,6 +309,76 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == GALLERY_PIC && resultCode == RESULT_OK){
+
+            Uri imageUri = data.getData();
+            CropImage.activity(imageUri)
+                    .setAspectRatio(1,1)
+                    .start(this);
+        }
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            curUser = FirebaseAuth.getInstance().getCurrentUser();
+            // String Uid = usrDetails.getString(getString(R.string.USERID),"not_Known");
+            String Uid = curUser.getUid();
+
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+
+                ImageUploadProgressDiaglog = new ProgressDialog(BaseActivity.this);
+                ImageUploadProgressDiaglog.setTitle("Uploading Image");
+                ImageUploadProgressDiaglog.setMessage("Please Wait While We Upload Image");
+                ImageUploadProgressDiaglog.setCanceledOnTouchOutside(false);
+                ImageUploadProgressDiaglog.show();
+
+                StorageReference filePath = userProfilePic.child("UserProfile_pic").child(Uid + ".jpg");
+
+                filePath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                        if( task.isSuccessful()){
+                            //Toast.makeText(BaseActivity.this,"Image Upload Successful",Toast.LENGTH_LONG).show();
+
+                            @SuppressWarnings("VisibleForTests")
+                            final String downloadUrl = task.getResult().getDownloadUrl().toString();
+
+                            dB_user.child("ProfilePic").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        ImageUploadProgressDiaglog.dismiss();
+                                        Toast.makeText(BaseActivity.this,"Image Upload Successful",Toast.LENGTH_SHORT).show();
+                                        editor.putString(getString(R.string.PROFILE_PIC_TAG),downloadUrl);
+                                        Picasso.with(BaseActivity.this).load(downloadUrl).into(profilePic);
+                                    }else{
+                                        ImageUploadProgressDiaglog.dismiss();
+                                        Toast.makeText(BaseActivity.this,"Couldn't Update User",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                        else{
+                            ImageUploadProgressDiaglog.dismiss();
+                            Toast.makeText(BaseActivity.this,"Image Upload Failed",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                String strError = error.getMessage();
+
+                Toast.makeText(BaseActivity.this, strError ,Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
@@ -260,7 +394,6 @@ public class BaseActivity extends AppCompatActivity {
     public void doctors(View V){
         Intent i= new Intent(BaseActivity.this, DoctorsList.class);
         startActivity(i);
-
     }
 
 }
