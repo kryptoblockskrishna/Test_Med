@@ -72,8 +72,10 @@ public class MyProTab1 extends Fragment {
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private TextView age;
 
+    LinearLayout myPro_StateCity;
+
     DatabaseReference dB_ref;
-    String usr_SP ;
+    String usrID_SP ;
 
     CardView personalInfo;
     CardView currentAdd;
@@ -90,38 +92,38 @@ public class MyProTab1 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_my_pro_tab1, container, false);
 
+        updateUserInfo = new ProgressDialog(view.getContext());
+
         // =============================== SHARED PREFERENCE =======================================
 
         //usrDetails = view.getContext().getSharedPreferences("USER", MODE_PRIVATE);
         usrDetails = PreferenceManager.getDefaultSharedPreferences(view.getContext());
 
-        updateUserInfo = new ProgressDialog(view.getContext());
+        usrID_SP = usrDetails.getString(getResources().getString(R.string.USERID) , "");
+        email = usrDetails.getString(getResources().getString(R.string.EMAIL_TAG), "");
+        contact = usrDetails.getString(getResources().getString(R.string.CONTACT_TAG), "");
 
-        usr_SP = usrDetails.getString("USER_ID" , "NULL");
-        email = usrDetails.getString("EMAIL", "NULL");
-        contact = usrDetails.getString("CONTACT", "NULL");
-
-        fName = usrDetails.getString("FIRST_NAME","NULL");
-        lName = usrDetails.getString("LAST_NAME", "NULL");
-        dob = usrDetails.getString("DOB", "NULL");
+        fName = usrDetails.getString("FIRST_NAME","");
+        lName = usrDetails.getString("LAST_NAME", "");
+        dob = usrDetails.getString("DOB", "");
         //dob_d = usrDetails.getString("DOB_DAY", "");
         //dob_m = usrDetails.getString("DOB_MONTH", "");
         //dob_y = usrDetails.getString("DOB_YEAR", "");
-        m_status = usrDetails.getString("M_STATUS", "NULL");
-        gender = usrDetails.getString("GENDER", "NULL");
-        em_contact = usrDetails.getString("EM_CONTACT", "NULL");
-        em_contactType = usrDetails.getString("EM_CONTACT_TYPE", "NULL");
+        m_status = usrDetails.getString("M_STATUS", "");
+        gender = usrDetails.getString("GENDER", "");
+        em_contact = usrDetails.getString("EM_CONTACT", "");
+        em_contactType = usrDetails.getString("EM_CONTACT_TYPE", "");
 
-        Add1 = usrDetails.getString("ADD_LINE01", "NULL");
-        Add2 = usrDetails.getString("ADD_LINE02", "NULL");
-        pin = usrDetails.getString("PIN", "NULL");
-        city = usrDetails.getString("CITY", "NULL");
-        state = usrDetails.getString("STATE", "NULL");
-        country = usrDetails.getString("COUNTRY", "NULL");
-        uniqueID = usrDetails.getString("UNIQUE_ID", "NULL");
+        Add1 = usrDetails.getString("ADD_LINE01", "");
+        Add2 = usrDetails.getString("ADD_LINE02", "");
+        pin = usrDetails.getString("PIN", "");
+        city = usrDetails.getString("CITY", "");
+        state = usrDetails.getString("STATE", "");
+        country = usrDetails.getString("COUNTRY", "");
+        uniqueID = usrDetails.getString("UNIQUE_ID", "");
         // -----------------------------------------------------------------------------------------
 
-        dB_ref = FirebaseDatabase.getInstance().getReference().child("User").child(usr_SP);
+        dB_ref = FirebaseDatabase.getInstance().getReference().child("User").child(usrID_SP);
 
         // ============================= INITIALIZING FIELDS =======================================
 
@@ -140,6 +142,7 @@ public class MyProTab1 extends Fragment {
         pin_et = (EditText) view.findViewById(R.id.mypro_pin);
         uniqueID_et = (EditText) view.findViewById(R.id.mypro_uniqueIDValue);
         uniqueID_tv = (TextView) view.findViewById(R.id.mypro_uniqueIDtype);
+        myPro_StateCity = (LinearLayout) view.findViewById(R.id.mypro_StateCity);
         // -----------------------------------------------------------------------------------------
 
         //=================== TODO(1) : Make String Array(s) Dynamic ===============================
@@ -148,7 +151,7 @@ public class MyProTab1 extends Fragment {
         final String[] mStatus_arr = view.getResources().getStringArray(R.array.Marital_status);
         final String[] gender_arr = view.getResources().getStringArray(R.array.Gender);
         final String[] emContactType_arr = view.getResources().getStringArray(R.array.Emergency_contact_no);
-        final String[] country_arr = view.getResources().getStringArray(R.array.Gender);
+        final String[] country_arr = view.getResources().getStringArray(R.array.Country);
         final String[] state_arr = view.getResources().getStringArray(R.array.State);
         // -----------------------------------------------------------------------------------------
 
@@ -166,7 +169,6 @@ public class MyProTab1 extends Fragment {
 
             // -------------- Current Address Body --------------------
         final LinearLayout l = (LinearLayout)view.findViewById(R.id.mypro_currAdd_Body);
-        final LinearLayout StateCity = (LinearLayout) view.findViewById(R.id.mypro_StateCity);
         l.setVisibility(View.GONE);
         country_sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
@@ -183,10 +185,10 @@ public class MyProTab1 extends Fragment {
                 }
 
                 if(position != 1 || position == 0){
-                    StateCity.setVisibility(View.GONE);
+                    myPro_StateCity.setVisibility(View.GONE);
                 }
                 else{
-                    StateCity.setVisibility(View.VISIBLE);
+                    myPro_StateCity.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -291,19 +293,20 @@ public class MyProTab1 extends Fragment {
         });
         // -----------------------------------------------------------------------------------------
 
+
         // ============================ INITIALIZING MY PROFILE ====================================
 
         email_et.setText(email);
         contact_et.setText(contact);
 
-        if(! fName.equals("NULL")){
+        if( em_contact != null && !em_contact.equals(getResources().getString(R.string.DB_NOTSET)) ){
 
             fName_et.setText(fName);
             lName_et.setText(lName);
             emContact_et.setText(em_contact);
             dateEdit.setText(dob);
 
-            if(!m_status.equals("NULL")) {
+            if(!m_status.equals( getString(R.string.DB_NOTSET) )) {
                 for (pos = 0; pos < mStatus_arr.length; pos++) {
                     if (mStatus_arr[pos].equals(m_status))
                         break;
@@ -317,7 +320,7 @@ public class MyProTab1 extends Fragment {
             }
             maritalStat_sp.setSelection(pos);
 
-            if(!gender.equals("NULL")) {
+            if(!gender.equals( getString(R.string.DB_NOTSET) )) {
                 for (pos = 0; pos < gender_arr.length; pos++) {
                     if (gender_arr[pos].equals(gender))
                         break;
@@ -331,7 +334,7 @@ public class MyProTab1 extends Fragment {
             }
             gender_sp.setSelection(pos);
 
-            if(!em_contactType.equals("NULL")) {
+            if(!em_contactType.equals( getString(R.string.DB_NOTSET) )) {
                 for (pos = 0; pos < emContactType_arr.length; pos++) {
                     if (emContactType_arr[pos].equals(em_contactType))
                         break;
@@ -346,7 +349,7 @@ public class MyProTab1 extends Fragment {
             emContactType_sp.setSelection(pos);
         }
 
-        if(!pin.equals("NULL")){
+        if(pin != null && !pin.equals( getString(R.string.DB_NOTSET) )){
 
             l.setVisibility(View.VISIBLE);
 
@@ -355,21 +358,26 @@ public class MyProTab1 extends Fragment {
             pin_et.setText(pin);
             uniqueID_et.setText(uniqueID);
 
-            if(!country.equals("NULL")) {
-                for (pos = 0; pos < country_arr.length; pos++) {
-                    if (country_arr[pos].equals(country))
-                        break;
-                }
+            // ================================== Country ==========================================
 
-                if( pos == country_arr.length)
-                    pos = 0;
-
-            }else{
-                pos = 0;
+            for (pos = 0; pos < country_arr.length; pos++) {
+                if (country_arr[pos].equals(country))
+                    break;
             }
+
+            if( pos == country_arr.length)
+                pos = 0;
+
             country_sp.setSelection(pos);
 
-            if(!state.equals("NULL")) {
+            if( country.equals("India"))
+                myPro_StateCity.setVisibility(View.VISIBLE);
+            else
+                myPro_StateCity.setVisibility(View.GONE);
+
+            // ==================================== State ==========================================
+
+            if(!state.equals( getString(R.string.DB_NOTSET) ) ) {
                 for (pos = 0; pos < state_arr.length; pos++) {
                     if (state_arr[pos].equals(state))
                         break;
@@ -383,24 +391,24 @@ public class MyProTab1 extends Fragment {
             }
             state_sp.setSelection(pos);
 
-            if( city.equals("Other")){
-                r.setVisibility(View.VISIBLE);
-                city_sp.setSelection(City_arr.length - 1);
+            // ===================================== City ==========================================
+
+            for (pos = 0; pos < City_arr.length; pos++) {
+                if (City_arr[pos].equals(city))
+                    break;
+            }
+
+            if( pos == City_arr.length ) {
+                pos = City_arr.length - 1;
+                city_sp.setSelection(pos);
+
                 OtherCity_et.setText(city);
-            }
-            else if(!city.equals("NULL")) {
-                for (pos = 0; pos < City_arr.length; pos++) {
-                    if (City_arr[pos].equals(city))
-                        break;
-                }
-
-                if( pos == City_arr.length)
-                    pos = 0;
-
+                r.setVisibility(View.VISIBLE);
             }else{
-                pos = 0;
+                city_sp.setSelection(pos);
             }
-            city_sp.setSelection(pos);
+
+
         }
 
         // -----------------------------------------------------------------------------------------
@@ -485,13 +493,13 @@ public class MyProTab1 extends Fragment {
             UsrMap.put("Sex", pos_g);
             UsrMap.put("Em_Contact_type",pos_emC);
             UsrMap.put("dOb",dateEdit.getText().toString());
-
             UsrMap.put("Country", usrDetails.getString("COUNTRY",""));
             UsrMap.put("State", usrDetails.getString("STATE",""));
             UsrMap.put("City", usrDetails.getString("CITY",""));
             UsrMap.put("Add_line1", usrDetails.getString("ADD_LINE01",""));
             UsrMap.put("Add_line2", usrDetails.getString("ADD_LINE02",""));
             UsrMap.put("Pin", usrDetails.getString("PIN",""));
+            UsrMap.put("ProfilePic", usrDetails.getString("PROFILE_PIC",""));
             UsrMap.put("UniqueID", usrDetails.getString("UNIQUE_ID",""));
 
             // UsrMap.put("dOb_d","");
@@ -565,7 +573,12 @@ public class MyProTab1 extends Fragment {
             Map<String, String> UsrMap = new HashMap<String, String>();
 
             final String pos_country = country_sp.getSelectedItem().toString();
-            final String pos_city = city_sp.getSelectedItem().toString();
+
+            String pos_city_check = city_sp.getSelectedItem().toString();
+            if(pos_city_check.equals("Other")) {
+                pos_city_check = OtherCity_et.getText().toString();
+            }
+            final String pos_city = pos_city_check;
 
             if( state_sp != null){
                 final String pos_state = state_sp.getSelectedItem().toString();
@@ -587,6 +600,8 @@ public class MyProTab1 extends Fragment {
             UsrMap.put("Add_line1", Add1_et.getText().toString());
             UsrMap.put("Add_line2", Add2_et.getText().toString());
             UsrMap.put("Pin", pin_et.getText().toString());
+            UsrMap.put("ProfilePic", usrDetails.getString("PROFILE_PIC",""));
+
             UsrMap.put("UniqueID",uniqueID_et.getText().toString());
 
             dB_ref.setValue(UsrMap).addOnCompleteListener(new OnCompleteListener<Void>() {
