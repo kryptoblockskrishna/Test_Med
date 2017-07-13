@@ -53,6 +53,7 @@ public class TrackFragment extends Fragment {
         // Inflate the layout for this fragment
 
 
+        //........................... recycler view for health packages.....................//
 
         recyclerVwSrvs =(RecyclerView)v.findViewById(R.id.home_srvs_rcyclrView);
         layoutManagerSrvs = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
@@ -81,15 +82,18 @@ public class TrackFragment extends Fragment {
                     @Override
                     public void OnItemClick(View v, int position) {
                         Intent i = new Intent(v.getContext(), Health_Packages.class);
-                        i.putExtra("Calling_From",0);
-                        i.putExtra("Position",position);
+                        i.putExtra("Calling_From",0);                   // Calling from is to know where the activity is being called from.->
+                                                                        // Not Needed in this case. Needed in Doctors Profile, as can be called from favorites and search.
+                        i.putExtra("Position",position);                // Position is to send position of item clicked in recycler view.
                         startActivity(i);
                     }
                 })
         );
 
 
-        // Recycler View for Blood test
+
+        // ..................Recycler View for Blood test..............//
+
         recyclerVwHmBT =(RecyclerView)v.findViewById(R.id.home_bt_rcyclrView);
         layoutManagerHmBT = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         recyclerVwHmBT.setLayoutManager(layoutManagerHmBT);
@@ -125,7 +129,8 @@ public class TrackFragment extends Fragment {
                 })
         );
 
-        // Recycler View for Dyagnostics Test
+
+        // ...............Recycler View for Dyagnostics Test...................//
 
         recyclerVwHmDT = (RecyclerView)v.findViewById(R.id.home_dt_rcyclrView);
         layoutManagerHmDT = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);

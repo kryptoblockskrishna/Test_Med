@@ -22,6 +22,7 @@
             android:src="@drawable/ic_back_arrow"
             />
         <TextView
+            android:id="@+id/dt_pro_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="C.T. Scan"
@@ -59,48 +60,39 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/dt_pro_desc_layout"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:textSize="16sp"
-                    android:textColor="@color/subTitleTextColor"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"/>
-                <TextView
-                    android:layout_marginTop="7dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/desc_sample1"/>
-            </LinearLayout>
-            <LinearLayout
+                android:text="Description"
+                android:textSize="16sp"
+                android:textColor="@color/subTitleTextColor"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"/>
+            <TextView
+                android:id="@+id/dt_pro_desc"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/desc_sample1"/>
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Pre-requisites"
-                    android:textSize="16sp"
-                    android:textColor="@color/subTitleTextColor"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Empty Stomach"
-                    android:layout_marginTop="7dp"/>
-
-            </LinearLayout>
-
+                android:layout_marginTop="15dp"
+                android:text="Pre-requisites"
+                android:textSize="16sp"
+                android:textColor="@color/subTitleTextColor"
+                />
+            <TextView
+                android:id="@+id/dt_pro_req"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empty Stomach"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="15dp"
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"

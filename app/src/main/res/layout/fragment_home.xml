@@ -117,24 +117,169 @@
                         />
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical">
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:background="#b9b2b2"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_filter"
-                            android:paddingLeft="20dp"
-                            android:id="@+id/iv3"/>
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:elevation="7dp"
+                            android:background="#ded3d3">
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="40dp"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ic_filter"
+                                android:id="@+id/home_def_filter_iv"
+                                />
+                            <TextView
+                                android:id="@+id/home_def_filter_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="70dp"
+                                android:paddingLeft="70dp"
+                                android:paddingTop="15dp"
+                                android:clickable="true"
+                                android:text="Set Filter"
+                                android:textColor="#021142"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:layout_toRightOf="@id/home_def_filter_iv"
+                                android:textSize="12sp"
+                                android:layout_marginTop="40dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="(Click to set your default filter)"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="10dp"
+                                android:id="@+id/textView2" />
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:id="@+id/home_def_filter_arrow"
+                                android:src="@drawable/ic_circle_arrow"
+                                android:scaleType="centerInside"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginRight="15dp"/>
+
+                        </RelativeLayout>
+
+                        <android.support.v7.widget.CardView
+                            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/home_def_filter_card"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Set Default Filter"
-                            android:paddingLeft="20dp"
-                            android:textColor="#021142"
-                            android:layout_toRightOf="@id/iv3"
-                            android:layout_marginTop="7dp"
-                            />
+                            card_view:cardCornerRadius="4dp"
+                            android:elevation="3dp"
+                            app:cardBackgroundColor="#ded3d3">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:id="@+id/rel_layout"
+                                android:layout_marginRight="10dp">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_top"
+                                    android:orientation="horizontal"
+                                    android:id="@+id/linlayout1">
+
+
+
+
+                                    <LinearLayout
+                                        android:id="@+id/appoint_city_layout"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_weight="1">
+
+                                        <Spinner
+                                            android:id="@+id/appoint_spinner_city"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:layout_marginTop="2dp"
+                                            android:background="#ccc3c3"
+                                            android:elevation="0dp"
+                                            android:entries="@array/City"
+                                            android:pointerIcon="arrow"
+                                            android:textSize="16sp" />
+
+                                        <TextView
+                                            android:id="@+id/textView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="6dp"
+                                            android:layout_marginTop="2dp"
+                                            android:text="City*"
+                                            android:textSize="12sp" />
+                                    </LinearLayout>
+                                    <RelativeLayout
+                                        android:id="@+id/appoint_locale_layout"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_weight="1."
+                                        android:orientation="vertical">
+
+                                        <Spinner
+                                            android:id="@+id/appoint_locale"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:layout_marginTop="2dp"
+                                            android:background="#ccc3c3"
+                                            android:elevation="0dp"
+                                            android:entries="@array/locale"
+                                            android:pointerIcon="arrow"
+                                            android:textSize="16sp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginLeft="6dp"
+                                            android:layout_marginTop="32dp"
+                                            android:text="Locale"
+                                            android:textSize="12sp" />
+                                    </RelativeLayout>
+
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_below="@+id/linlayout1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="40dp"
+                                    android:text="Set Filter"
+                                    android:textStyle="bold"
+                                    android:textSize="15sp"
+                                    android:gravity="center"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:textColor="@color/colorPrimary"
+                                    />
+
+
+
+
+                            </RelativeLayout>
+
+                        </android.support.v7.widget.CardView>
+
 
                     </RelativeLayout>
                     <TextView

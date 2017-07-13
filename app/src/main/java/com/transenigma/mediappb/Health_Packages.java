@@ -1,5 +1,6 @@
 package com.transenigma.mediappb;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -13,6 +14,9 @@ public class Health_Packages extends AppCompatActivity {
     TextView t1;
     int i1=0;
     ImageView iv1,iv2;
+
+    TextView title,desc,req;
+    String[] Title,Desc,Req;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,5 +53,22 @@ public class Health_Packages extends AppCompatActivity {
                 finish();
             }
         });
+
+
+        //getting intent and fixing values from arrays based on position.
+
+        Intent i = getIntent();
+        title = (TextView)findViewById(R.id.hp_pro_title);
+        desc =(TextView)findViewById(R.id.hp_pro_desc);
+        req= (TextView)findViewById(R.id.hp_pro_req);
+        int location = i.getIntExtra("Calling_From",0);  // not needed, Just for future use when tracking
+        int position = i.getIntExtra("Position",0);  // Here Position is name tag given when feeding into intent, 0 is default value if missing.
+        Title = getResources().getStringArray(R.array.home_srvs);
+        Desc = getResources().getStringArray(R.array.hp_pro_desc);
+        Req = getResources().getStringArray(R.array.hp_pro_req);
+
+        title.setText(Title[position]);
+        desc.setText(Desc[position]);
+        req.setText(Req[position]);
     }
 }

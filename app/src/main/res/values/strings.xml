@@ -197,6 +197,20 @@
         <item>Senior Citizen(P2)</item>
         <item>Well Women</item>
     </string-array>
+    <string-array name="hp_pro_desc">
+        <item>Desc1</item>
+        <item>Desc2</item>
+        <item>desc3</item>
+        <item>Desc4</item>
+        <item>Desc5</item>
+    </string-array>
+    <string-array name="hp_pro_req">
+        <item>req1</item>
+        <item>req2</item>
+        <item>req3</item>
+        <item>req4</item>
+        <item>req5</item>
+    </string-array>
 
     <string-array name="home_bt_title">
         <item>Cortisol</item>
@@ -204,6 +218,20 @@
         <item>Albumin</item>
         <item>LFT</item>
         <item>AlP</item>
+    </string-array>
+    <string-array name="bt_pro_desc">
+        <item>Desc1</item>
+        <item>Desc2</item>
+        <item>desc3</item>
+        <item>Desc4</item>
+        <item>Desc5</item>
+    </string-array>
+    <string-array name="bt_pro_req">
+        <item>None</item>
+        <item>Empty Stomach</item>
+        <item>None</item>
+        <item>No food for 1hr</item>
+        <item>None</item>
     </string-array>
 
     <string-array name="home_bt_price">
@@ -251,6 +279,22 @@
         <item>X-Ray</item>
         <item>Endoscopy</item>
         <item>USG</item>
+    </string-array>
+    <string-array name="dt_pro_desc">
+        <item>Desc1</item>
+        <item>Desc2</item>
+        <item>desc3</item>
+        <item>Desc4</item>
+        <item>Desc5</item>
+        <item>Desc6</item>
+    </string-array>
+    <string-array name="dt_pro_req">
+        <item>Dyg_Req1</item>
+        <item>Dyg_Req2</item>
+        <item>Dyg_Req3</item>
+        <item>Dyg_Req4</item>
+        <item>Dyg_Req5</item>
+        <item>Dyg_Req6</item>
     </string-array>
 
     <string-array name="Country">

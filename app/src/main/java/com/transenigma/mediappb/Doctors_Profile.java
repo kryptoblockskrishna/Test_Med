@@ -92,7 +92,7 @@ public class Doctors_Profile extends AppCompatActivity {
         avail =(TextView)findViewById(R.id.doc_pro_speciality_avail);
         from =(TextView)findViewById(R.id.doc_pro_speciality_time);
         pic = (ImageView)findViewById(R.id.doc_pro_pic);
-        if(loc==0){
+        if(loc==0){                                                 // when called from favourites location
             Name= getResources().getStringArray(R.array.rcy_pin_doc_name);
             Deg = getResources().getStringArray(R.array.rcy_pin_deg);
             Dept = getResources().getStringArray(R.array.rcy_pin_speciality);
@@ -101,7 +101,7 @@ public class Doctors_Profile extends AppCompatActivity {
             From = getResources().getStringArray(R.array.rcy_pin_from);
             img = img1;
         }
-        else {
+        else {                                                      // when called from searched doctors list.
             Name= getResources().getStringArray(R.array.doctor);
             Deg = getResources().getStringArray(R.array.degree);
             Dept = getResources().getStringArray(R.array.search_dept);

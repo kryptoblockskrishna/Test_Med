@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -32,6 +33,11 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ServicesFragment extends Fragment {
 
+    CardView c1;
+    TextView t1;
+    ImageView iv1;
+    int i1;
+
     public ServicesFragment() {
         // Required empty public constructor
     }
@@ -54,9 +60,35 @@ public class ServicesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         Toolbar toolbar = (Toolbar) v.findViewById(R.id.my_profile_toolbar);
 
+        c1 =(CardView)v.findViewById(R.id.home_def_filter_card);
+        t1 = (TextView)v.findViewById(R.id.home_def_filter_text);
+        iv1 = (ImageView)v.findViewById(R.id.home_def_filter_arrow);
+        c1.setVisibility(View.GONE);
+        i1=0;
+        t1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(i1==0){
+                    i1=1;
+                    c1.setVisibility(View.VISIBLE);
+                    iv1.animate().rotation(180).setDuration(100).start();
+
+                }
+                else {
+                    i1=0;
+                    c1.setVisibility(View.GONE);
+                    iv1.animate().rotation(0).setDuration(100).start();
+                }
+            }
+        });
+
+
         FillDetails = (TextView) v.findViewById(R.id.udn_content);
         usrDetailNoti = (RelativeLayout) v.findViewById(R.id.user_details_notification);
         notifEndLine = (TextView) v.findViewById(R.id.user_details_noti_endline);
+
+
+
 
         // ======================================== Shared Preferences =========================================
 
