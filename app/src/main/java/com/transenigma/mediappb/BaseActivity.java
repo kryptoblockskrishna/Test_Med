@@ -56,6 +56,11 @@ public class BaseActivity extends AppCompatActivity {
     int[] img_home ={R.drawable.welcome,R.drawable.appointment,R.drawable.services};
     int img= img_home[0];
     int j=0;
+    String usr_SP,UserKind,dB_email,dB_fName,dB_lName,dB_Gender,dB_contact,dob,dB_pin,
+            dB_Add1,dB_Add2,dB_City,dB_State,dB_Country,dB_MS,dB_emCont,dB_emContType,dB_Unique_Id;
+    String Uid;
+    DatabaseReference dB_ref;
+    FirebaseUser user;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -128,8 +133,172 @@ public class BaseActivity extends AppCompatActivity {
         usrDetails = PreferenceManager.getDefaultSharedPreferences(BaseActivity.this);
         editor = usrDetails.edit();
 
+
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbarLayout);
         setSupportActionBar(toolbar);
+
+        // ---------------------------------------Setting Shared Preference ----------------------------------------
+        final Context context = BaseActivity.this;
+        //usrDetails =  context.getSharedPreferences("USER", MODE_PRIVATE);
+        usrDetails = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = usrDetails.edit();
+
+        FirebaseAuth.AuthStateListener mAuthListener;
+
+        usr_SP = usrDetails.getString("USER_ID" , "NOT_INITIALIZED");
+        UserKind = usrDetails.getString("USER_KIND", "NOT_INITIALIZED");
+
+        // ---------------------------------------------- FIREBASE -------------------------------------------------
+        mAuth = FirebaseAuth.getInstance();
+
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                user = firebaseAuth.getCurrentUser();
+                if (user == null) {
+                    // User is not signed in
+                    Intent login = new Intent(BaseActivity.this, Login.class);
+                    startActivity(login);
+                    finish();
+                }
+                else{
+
+                    Uid = user.getUid();
+
+                    if(! usr_SP.equals(Uid)) {
+
+                        // editor.putString("USER_CHANGED", "YES");
+
+                        // ------- For Newly Logged In --------
+
+                        dB_ref = FirebaseDatabase.getInstance().getReference().child("User").child(Uid);
+
+                        dB_ref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                // -------------------------- PULLING DATA FROM DB -------------------------------------------
+
+                                dB_email = dataSnapshot.child("Email").getValue().toString();
+                                dB_contact = dataSnapshot.child("Contact").getValue().toString();
+
+                                dB_fName = dataSnapshot.child("F_Name").getValue().toString();
+                                if( dB_fName != null ){
+                                    if(!dB_fName.isEmpty()) {
+                                        dB_lName = dataSnapshot.child("L_Name").getValue().toString();
+                                        dob = dataSnapshot.child("dOb").getValue().toString();
+                                        // dob_d = dataSnapshot.child("dOb_d").getValue().toString();
+                                        // dob_m = dataSnapshot.child("dOb_m").getValue().toString();
+                                        // dob_y = dataSnapshot.child("dOb_y").getValue().toString();
+                                        dB_MS = dataSnapshot.child("M_Stat").getValue().toString();
+                                        dB_Gender = dataSnapshot.child("Sex").getValue().toString();
+                                        dB_emCont = dataSnapshot.child("Em_Contact").getValue().toString();
+                                        dB_emContType = dataSnapshot.child("Em_Contact_type").getValue().toString();
+                                    }
+                                }
+
+                                dB_pin = dataSnapshot.child("Pin").getValue().toString();
+                                if(dB_pin != null ){
+                                    if(!dB_pin.isEmpty()) {
+                                        dB_Add1 = dataSnapshot.child("Add_line1").getValue().toString();
+                                        dB_Add2 = dataSnapshot.child("Add_line2").getValue().toString();
+                                        dB_City = dataSnapshot.child("City").getValue().toString();
+                                        dB_State = dataSnapshot.child("State").getValue().toString();
+                                        dB_Country = dataSnapshot.child("Country").getValue().toString();
+                                        dB_Unique_Id = dataSnapshot.child("UniqueID").getValue().toString();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                        // -------------------------- UPDATING SHARED PREFERENCE -------------------------------------------
+                        editor.putString("USER_ID", Uid);
+                        editor.putString(getString(R.string.EMAIL_TAG), dB_email);
+                        editor.putString(getString(R.string.CONTACT_TAG), dB_contact);
+
+                        if(dB_fName != null ){
+                            if(!dB_fName.isEmpty()) {
+                                editor.putString("FIRST_NAME", dB_fName);
+                                editor.putString("LAST_NAME", dB_lName);
+                                editor.putString("DOB", dob);
+                                //editor.putString("DOB_DAY", dob_d);
+                                //editor.putString("DOB_MONTH", dob_m);
+                                //editor.putString("DOB_YEAR", dob_y);
+                                editor.putString("M_STATUS", dB_MS);
+                                editor.putString("GENDER", dB_Gender);
+                                editor.putString("EM_CONTACT", dB_emCont);
+                                editor.putString("EM_CONTACT_TYPE", dB_emContType);
+                            }
+                            else{
+                                editor.putString("FIRST_NAME", "NULL");
+                                editor.putString("LAST_NAME", "NULL");
+                                editor.putString("DOB", "NULL");
+                                //editor.putString("DOB_DAY", "");
+                                //editor.putString("DOB_MONTH", "");
+                                //editor.putString("DOB_YEAR", "");
+                                editor.putString("M_STATUS", "NULL");
+                                editor.putString("GENDER", "NULL");
+                                editor.putString("EM_CONTACT", "NULL");
+                                editor.putString("EM_CONTACT_TYPE", "NULL");
+                            }
+                        }
+                        else{
+                            editor.putString("FIRST_NAME", "NULL");
+                            editor.putString("LAST_NAME", "NULL");
+                            editor.putString("DOB", "NULL");
+                            //editor.putString("DOB_DAY", "");
+                            //editor.putString("DOB_MONTH", "");
+                            //editor.putString("DOB_YEAR", "");
+                            editor.putString("M_STATUS", "NULL");
+                            editor.putString("GENDER", "NULL");
+                            editor.putString("EM_CONTACT", "NULL");
+                            editor.putString("EM_CONTACT_TYPE", "NULL");
+                        }
+
+                        if(dB_pin != null ){
+
+                            if(!dB_pin.isEmpty()) {
+                                editor.putString("ADD_LINE01", dB_Add1);
+                                editor.putString("ADD_LINE02", dB_Add2);
+                                editor.putString("PIN", dB_pin);
+                                editor.putString("CITY", dB_City);
+                                editor.putString("STATE", dB_State);
+                                editor.putString("COUNTRY", dB_Country);
+                                editor.putString("UNIQUE_ID", dB_Unique_Id);
+                            }
+                            else{
+                                editor.putString("ADD_LINE01", "NULL");
+                                editor.putString("ADD_LINE02", "NULL");
+                                editor.putString("PIN", "NULL");
+                                editor.putString("CITY", "NULL");
+                                editor.putString("STATE", "NULL");
+                                editor.putString("COUNTRY", "NULL");
+                                editor.putString("UNIQUE_ID", "NULL");
+                            }
+                        }
+                        else{
+                            editor.putString("ADD_LINE01", "NULL");
+                            editor.putString("ADD_LINE02", "NULL");
+                            editor.putString("PIN", "NULL");
+                            editor.putString("CITY", "NULL");
+                            editor.putString("STATE", "NULL");
+                            editor.putString("COUNTRY", "NULL");
+                            editor.putString("UNIQUE_ID", "NULL");
+                        }
+
+                        editor.commit();
+
+
+                    }
+                }
+            }
+        };
 
         imageView =(ImageView)findViewById(R.id.home_image);
 
@@ -226,6 +395,7 @@ public class BaseActivity extends AppCompatActivity {
                     case R.id.my_health :
                         Intent i1 = new Intent(BaseActivity.this,MyHealth.class);
                         startActivity(i1);
+
 
                         getSupportActionBar().setTitle("transHealth");
                         item.setChecked(true);
@@ -403,6 +573,7 @@ public class BaseActivity extends AppCompatActivity {
     public void doctors(View V){
         Intent i= new Intent(BaseActivity.this, DoctorsList.class);
         startActivity(i);
+
     }
 
 }

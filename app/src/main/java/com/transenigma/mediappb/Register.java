@@ -139,6 +139,7 @@ public class Register extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
+                                        registerUserDB.dismiss();
 
                                         editor.putString(getString(R.string.USER_KIND) , getString(R.string.type_NewUser));
                                         editor.putString(getResources().getString(R.string.USERID), UID);
@@ -172,6 +173,7 @@ public class Register extends AppCompatActivity {
                         else{
 
                             registerUserDB.hide();
+
                             Toast.makeText(Register.this, "Error Occured With Auth", Toast.LENGTH_SHORT).show();
                         }
                     }
