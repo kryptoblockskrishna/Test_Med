@@ -576,4 +576,8 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void srvs_dt_more(View view) {
+        Intent i = new Intent(BaseActivity.this,dt_list.class);
+        startActivity(i);
+    }
 }

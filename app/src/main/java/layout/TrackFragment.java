@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.transenigma.mediappb.BaseActivity;
 import com.transenigma.mediappb.BloodTestDetails;
 import com.transenigma.mediappb.Doctors_Profile;
 import com.transenigma.mediappb.Dyagnostics_Profile;
@@ -25,6 +27,7 @@ import com.transenigma.mediappb.R;
 import com.transenigma.mediappb.RecyclerAdapterHomeBT;
 import com.transenigma.mediappb.RecyclerAdapterHomeDT;
 import com.transenigma.mediappb.RecyclerAdapterHomeServices;
+import com.transenigma.mediappb.dt_list;
 
 import java.util.ArrayList;
 
@@ -166,6 +169,7 @@ public class TrackFragment extends Fragment {
                     }
                 })
         );
+
 
         return v;
 

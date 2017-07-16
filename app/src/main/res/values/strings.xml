@@ -83,7 +83,6 @@
     </string-array>
 
 
-
     <string-array name="locale">
         <item>Select</item>
         <item>Howrah</item>
@@ -271,6 +270,57 @@
         <item>Son</item>
         <item>Daughter</item>
     </string-array>
+    <string-array name="dt_list">
+        <item>Medical Test</item>
+        <item>Amniocentesis</item>
+        <item>Angiography</item>
+        <item>Anti nuclear antibody</item>
+        <item>Biopsy</item>
+        <item>Blood test</item>
+        <item>Bone marrow examination</item>
+        <item>Bronchoscopy</item>
+        <item>Cardiac catheterization</item>
+        <item>Cardiac stress test</item>
+        <item>Clinical Urine Tests</item>
+        <item>Colonoscopy</item>
+        <item>Colposcopy</item>
+        <item>Complete blood count</item>
+        <item>Computed Tomography</item>
+        <item>Cupping therapy</item>
+        <item>Echocardiography</item>
+        <item>Electrocardiography</item>
+        <item>Electroencephalography</item>
+        <item>Electromyography</item>
+        <item>Elisa</item>
+        <item>Endoscopic retrograde cholangiopancreatography</item>
+        <item>Endoscopy</item>
+        <item>Esophagogastroduodenoscopy</item>
+        <item>Genetic testing</item>
+        <item>Glucose test</item>
+        <item>Glucose tolerance test</item>
+        <item>Hearing test</item>
+        <item>Hematocit</item>
+        <item>Holter monitor</item>
+        <item>Liver function tests</item>
+        <item>Lower gastrointestinal series</item>
+        <item>Lumbar Puncture</item>
+        <item>Magnetic Resonance Imaging</item>
+        <item>Mammography</item>
+        <item>Myelography</item>
+        <item>Pap test</item>
+        <item>Physical examination</item>
+        <item>Polymerase chain reaction</item>
+        <item>Positron emission tomography</item>
+        <item>Pregnancy test</item>
+        <item>Prothrombin time</item>
+        <item>Pulmonary function testing</item>
+        <item>Sigmoidoscopy</item>
+        <item>Skin allergy test</item>
+        <item>Thyroid function tests</item>
+        <item>Ultrasonography</item>
+        <item>X-Ray</item>
+
+    </string-array>
     <string-array name="home_dt_title">
         <item>CT Scan</item>
         <item>ECG</item>
@@ -366,8 +416,6 @@
     </string>
 
     <string name="action_settings">Settings</string>
-
-
 
 
     <string name="NOT_INITIALIZED">NOT_INITIALIZED</string>
